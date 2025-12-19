@@ -1,0 +1,42 @@
+.GroupItem {
+    display: flex;
+    height: 87px;
+    padding-left: 20px;
+    padding-right: 30px;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--inverted-bg-color);
+
+    .number {
+        font-family: var(--font-family-number);
+    }
+
+    .left_block {
+        display: flex;
+        justify-content: start;
+        align-items: center;
+        gap: 15px;
+
+        .avatar {
+            border-radius: 50%;
+            object-fit: cover;
+            width: 63px;
+            height: 63px;
+        }
+
+        .title {
+            font: var(--font-l-b);
+            margin: 0;
+        }
+
+        .quantity {
+            font: var(--font-s);
+            color: var(--gray-color);
+        }
+    }
+
+    .data {
+        font: var(--font-s);
+        color: var(--gray-color);
+    }
+}

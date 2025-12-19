@@ -1,0 +1,30 @@
+.item {
+    margin-top: 18px;
+    border-radius: 5px;
+    color: var(--primary-color);
+    cursor: default !important;
+
+    &:active {
+        color: red;
+    }
+}
+.active{
+    margin-top: 10px;
+    height: 35px;
+    background: linear-gradient(90deg, rgba(10, 10, 10, 0) 0%, rgba(60, 101, 69, 0.25) 100%) !important;
+    margin-right: 15px;
+    
+    .text{color: var(--green-color)}
+}
+
+.text {
+    margin: 0;
+    transition: color 0.2s ease;
+    cursor: pointer;
+
+
+
+    &:hover {
+        color: var(--green-color);
+    }
+}

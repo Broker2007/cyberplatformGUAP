@@ -1,0 +1,201 @@
+.CardTeam {
+    border: 2px solid var(--border-color);
+    padding: 100px 200px;
+    background-color: var(--bg-color-team);
+    border-radius: 20px;
+    height: 400px;
+    transition: all 1.5s ease;
+    transform-origin: center;
+    position: relative;
+    width: 550px;
+    overflow: hidden; // Чтобы контент не выходил за границы при анимации
+    .flex_el {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        button {
+            display: none;
+            margin-bottom: 10px;
+        }
+    }
+
+    .block_icon {
+        padding: 20px;
+        border: 2px solid var(--border-color);
+        background-color: var(--bg-color-team-light);
+        border-radius: 20px;
+    }
+
+    .content_description {
+        opacity: 0;
+        visibility: hidden;
+        max-height: 0;
+        overflow: hidden;
+        transition:
+            opacity 0.8s ease 0.5s,
+            max-height 0.8s ease 0.5s,
+            visibility 0.8s ease 0.5s;
+    }
+
+    .icon {
+        fill: var(--secondary-color);
+        transition: all 0.8s ease;
+    }
+
+    .title {
+        font: var(--font-xl);
+        color: var(--primary-color-team);
+        margin: 0;
+        transition: all 0.8s ease;
+    }
+
+    .description {
+        font: var(--font-l);
+        color: var(--secondary-color);
+        margin: 0;
+        margin-top: 10px;
+        transition: all 0.8s ease;
+    }
+
+    .content {
+        // Используем grid вместо block/flex
+        display: grid;
+        grid-template-areas:
+            "icon"
+            "head";
+        grid-template-rows: auto auto;
+        gap: 20px;
+        justify-items: center;
+        align-items: center;
+        text-align: center;
+        transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+
+        .block_icon {
+            grid-area: icon;
+            transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .content_head {
+            grid-area: head;
+            transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+    }
+
+    &.open {
+        padding: 20px;
+        width: 700px;
+        z-index: 15;
+        box-shadow: 0 10px 30px rgb(0 0 0 / 20%);
+
+        // .hoverZone {
+        //     pointer-events: none;
+        // }
+
+        .flex_el {
+            justify-content: space-between;
+            align-items: center;
+
+            button {
+                display: flex;
+            }
+        }
+
+        .content {
+            // Плавно меняем grid layout
+            grid-template-areas: "icon head";
+            grid-template-columns: auto 1fr;
+            justify-items: start;
+            align-items: center;
+            text-align: left;
+            gap: 10px;
+
+            // Добавляем небольшую задержку для более естественной анимации
+            transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.1s;
+
+            .block_icon {
+                transform: scale(0.75);
+                margin-left: -15px;
+                transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.2s;
+            }
+
+            .content_head {
+                transform: translateX(0);
+                opacity: 1;
+                margin-top: 0;
+                padding-top: 0;
+                transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.3s;
+            }
+        }
+
+        .content_description {
+            opacity: 1;
+            visibility: visible;
+            letter-spacing: 1px;
+            max-height: 500px;
+            transition:
+                opacity 0.8s ease 0.7s,
+                max-height 0.8s ease 0.7s,
+                visibility 0.8s ease 0.7s;
+
+            .span_description {
+                color: var(--primary-color-team);
+            }
+
+            .text_description_ol_item {
+                list-style-type: decimal;
+                list-style-position: inside;
+                margin: 10px 0;
+                padding-left: 0;
+
+                li {
+                    margin: 0;
+                    padding: 0;
+                }
+            }
+        }
+
+        .icon {
+            transform: scale(0.75);
+            transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.2s;
+        }
+
+        .icon_btn {
+            fill: var(--secondary-color-team);
+        }
+
+        .title {
+            font: var(--font-l);
+            transform: translateX(5px);
+            transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.4s;
+        }
+
+        .description {
+            font: var(--font-l);
+            transform: translateX(5px);
+            transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.5s;
+        }
+    }
+
+    // Анимации для закрытия
+    &:not(.open) {
+        .content {
+            .block_icon {
+                transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            }
+
+            .content_head {
+                transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.1s;
+            }
+        }
+
+        .icon {
+            transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .title,
+        .description {
+            transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.1s;
+        }
+    }
+}

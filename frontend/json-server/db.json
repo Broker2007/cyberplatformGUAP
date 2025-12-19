@@ -1,0 +1,1420 @@
+{
+  "posts": [
+    {
+      "id": "1",
+      "title": "json-server",
+      "userId": "1"
+    },
+    {
+      "id": "2",
+      "title": "json-server",
+      "userId": "2"
+    }
+  ],
+  "comments": [
+    {
+      "id": "1",
+      "body": "some comment",
+      "postId": "1"
+    }
+  ],
+  "users": [
+    {
+      "id": "1762381432321",
+      "email": "fedorovpasha2007@yandex.ru",
+      "password": "22334455+",
+      "fullName": "pavel",
+      "role": false,
+      "createdAt": "2025-11-04T23:17:30.607Z"
+    },
+    {
+      "id": "1762533046262",
+      "email": "f@yandex.ru",
+      "password": "12345678",
+      "fullName": "fed",
+      "role": true,
+      "createdAt": "2025-11-07T16:30:46.262Z"
+    }
+  ],
+  "profile": {
+    "first": "Павел",
+    "lastname": "fed",
+    "age": 18,
+    "currency": "RUB",
+    "country": "Russian",
+    "city": "SPb",
+    "username": "admin",
+    "avatar": "https://static3.go3.tv/scale/go3/webuploads/rest/upload/vod/5531595/images/20222409?dsth=412&dstw=412&srcmode=3&quality=65&type=1&srcx=1&srcy=1&srcw=1%2F1&srch=1%2F1"
+  },
+  "labTemplates": [
+    {
+      "id": "1",
+      "name": "CCNA Routing Lab",
+      "description": {
+        "overview": "Комплексная лабораторная работа по настройке протокола динамической маршрутизации OSPF в корпоративной сети. Студенты получат практический опыт конфигурации OSPF на нескольких маршрутизаторах, установления соседских отношений, управления областями OSPF и оптимизации параметров протокола для обеспечения быстрой сходимости и отказоустойчивости сети.",
+        "objectives": [
+          "Configure OSPF routing protocol on multiple routers",
+          "Establish neighbor relationships between OSPF routers",
+          "Verify OSPF routing table convergence",
+          "Troubleshoot OSPF adjacency issues"
+        ],
+        "resources": [
+          {
+            "title": "Cisco OSPF Configuration Guide",
+            "url": "https://example.com/ospf-guide"
+          },
+          {
+            "title": "OSPF Network Design Solutions",
+            "url": "https://example.com/ospf-design"
+          },
+          {
+            "title": "Routing Protocol Comparison Chart",
+            "url": "https://example.com/routing-comparison"
+          }
+        ]
+      },
+      "difficulty": "medium",
+      "tags": [
+        "cisco",
+        "routing",
+        "ospf",
+        "network"
+      ],
+      "eveNgTopologyId": "topo_123",
+      "createdAt": "2024-01-15T10:30:00Z"
+    },
+    {
+      "id": "2",
+      "name": "Network Security Fundamentals",
+      "description": {
+        "overview": "Практическая лабораторная работа по основам сетевой безопасности, включающая настройку межсетевых экранов и списков контроля доступа (ACL). Студенты изучат принципы stateful-инспекции, научатся создавать правила фильтрации для входящего и исходящего трафика, а также освоят методы тестирования эффективности настроенных политик безопасности в имитированной корпоративной среде.",
+        "objectives": [
+          "Configure stateful firewall rules",
+          "Implement ingress and egress filtering",
+          "Create and apply ACLs to interfaces",
+          "Test firewall rule effectiveness"
+        ],
+        "resources": [
+          {
+            "title": "Firewall Security Policies",
+            "url": "https://example.com/firewall-policies"
+          },
+          {
+            "title": "ACL Best Practices Guide",
+            "url": "https://example.com/acl-best-practices"
+          },
+          {
+            "title": "Network Security Fundamentals",
+            "url": "https://example.com/network-security"
+          }
+        ]
+      },
+      "difficulty": "hard",
+      "tags": [
+        "security",
+        "firewall",
+        "acl",
+        "network"
+      ],
+      "eveNgTopologyId": "topo_456",
+      "createdAt": "2024-01-16T14:20:00Z"
+    },
+    {
+      "id": "3",
+      "name": "Basic Switch Configuration",
+      "description": {
+        "overview": "Фундаментальная лабораторная работа по базовой настройке коммутаторов, включающая создание и управление виртуальными локальными сетями (VLAN). Студенты освоят принципы сегментации сети, научатся настраивать транковые соединения между коммутаторами, назначать порты VLAN и реализовывать базовые механизмы безопасности для защиты сетевой инфраструктуры от несанкционированного доступа.",
+        "objectives": [
+          "Create and configure multiple VLANs",
+          "Assign switch ports to appropriate VLANs",
+          "Configure trunk links between switches",
+          "Implement basic switch security features"
+        ],
+        "resources": [
+          {
+            "title": "VLAN Configuration Guide",
+            "url": "https://example.com/vlan-config"
+          },
+          {
+            "title": "Switch Security Hardening",
+            "url": "https://example.com/switch-security"
+          },
+          {
+            "title": "Network Segmentation Basics",
+            "url": "https://example.com/network-segmentation"
+          }
+        ]
+      },
+      "difficulty": "easy",
+      "tags": [
+        "switch",
+        "vlan",
+        "basic",
+        "configuration"
+      ],
+      "eveNgTopologyId": "topo_789",
+      "createdAt": "2024-01-17T09:15:00Z"
+    },
+    {
+      "id": "4",
+      "name": "BGP Routing Lab",
+      "description": {
+        "overview": "Продвинутая лабораторная работа по настройке протокола BGP (Border Gateway Protocol) для организации маршрутизации между автономными системами. Студенты получат глубокое понимание работы eBGP, научатся настраивать фильтрацию маршрутов, управлять атрибутами BGP для контроля выбора пути, а также освоят методы устранения неполадок в сложных средах междоменной маршрутизации, имитирующих реальные сценарии интернет-провайдеров.",
+        "objectives": [
+          "Establish eBGP peering between different AS",
+          "Configure BGP route filtering and policies",
+          "Implement route redistribution",
+          "Optimize BGP path selection"
+        ],
+        "resources": [
+          {
+            "title": "BGP Routing Fundamentals",
+            "url": "https://example.com/bgp-fundamentals"
+          },
+          {
+            "title": "Internet Routing Architectures",
+            "url": "https://example.com/routing-architectures"
+          },
+          {
+            "title": "BGP Troubleshooting Guide",
+            "url": "https://example.com/bgp-troubleshooting"
+          }
+        ]
+      },
+      "difficulty": "hard",
+      "tags": [
+        "bgp",
+        "routing",
+        "advanced",
+        "autonomous"
+      ],
+      "eveNgTopologyId": "topo_101",
+      "createdAt": "2024-01-18T16:45:00Z"
+    },
+    {
+      "id": "5",
+      "name": "Wireless Network Setup",
+      "description": {
+        "overview": "Комплексная лабораторная работа по проектированию и настройке беспроводных сетей, включающая развертывание точек доступа, настройку современных протоколов безопасности WPA2/WPA3 и организацию гостевых сетей. Студенты изучат методы оптимизации покрытия беспроводной сети, устранения помех и обеспечения безопасного доступа в различных сценариях развертывания - от малых офисов до корпоративных кампусных сетей.",
+        "objectives": [
+          "Configure wireless access points",
+          "Implement WPA2/WPA3 security protocols",
+          "Set up guest wireless networks",
+          "Optimize wireless coverage and performance"
+        ],
+        "resources": [
+          {
+            "title": "Wireless Security Protocols",
+            "url": "https://example.com/wireless-security"
+          },
+          {
+            "title": "WLAN Configuration Best Practices",
+            "url": "https://example.com/wlan-best-practices"
+          },
+          {
+            "title": "Wireless Network Optimization",
+            "url": "https://example.com/wireless-optimization"
+          }
+        ]
+      },
+      "difficulty": "medium",
+      "tags": [
+        "wireless",
+        "wlan",
+        "security",
+        "network"
+      ],
+      "eveNgTopologyId": "topo_202",
+      "createdAt": "2024-01-19T11:30:00Z"
+    },
+    {
+      "id": "6",
+      "name": "Network Monitoring",
+      "description": {
+        "overview": "Практическая лабораторная работа по внедрению системы мониторинга сетевой инфраструктуры с использованием протокола SNMP и современных инструментов наблюдения. Студенты научатся настраивать SNMP-агенты на сетевых устройствах, создавать пользовательские дашборды для визуализации метрик производительности, настраивать систему оповещений о критических событиях и анализировать данные мониторинга для proactive-управления сетевой инфраструктурой.",
+        "objectives": [
+          "Configure SNMP agents on network devices",
+          "Set up network monitoring system",
+          "Create custom monitoring dashboards",
+          "Implement alerting and notification systems"
+        ],
+        "resources": [
+          {
+            "title": "SNMP Configuration Guide",
+            "url": "https://example.com/snmp-guide"
+          },
+          {
+            "title": "Network Monitoring Tools Comparison",
+            "url": "https://example.com/monitoring-tools"
+          },
+          {
+            "title": "Infrastructure Monitoring Best Practices",
+            "url": "https://example.com/infrastructure-monitoring"
+          }
+        ]
+      },
+      "difficulty": "medium",
+      "tags": [
+        "monitoring",
+        "snmp",
+        "tools",
+        "diagnostics"
+      ],
+      "eveNgTopologyId": "topo_303",
+      "createdAt": "2024-01-20T13:20:00Z"
+    },
+    {
+      "id": "7",
+      "name": "VPN Configuration Lab",
+      "description": {
+        "overview": "Расширенная лабораторная работа по созданию защищенных VPN-тоннелей с использованием технологий IPSec и SSL VPN. Студенты освоят настройку site-to-site VPN для соединения удаленных офисов, организацию remote access VPN для мобильных пользователей, реализацию аутентификации на основе сертификатов и методов шифрования трафика. Особое внимание уделяется тестированию производительности VPN-соединений и устранению типичных проблем установления туннелей.",
+        "objectives": [
+          "Configure site-to-site IPSec VPN",
+          "Set up remote access SSL VPN",
+          "Implement certificate-based authentication",
+          "Test VPN tunnel establishment and performance"
+        ],
+        "resources": [
+          {
+            "title": "IPSec VPN Configuration Guide",
+            "url": "https://example.com/ipsec-vpn"
+          },
+          {
+            "title": "SSL VPN Best Practices",
+            "url": "https://example.com/ssl-vpn"
+          },
+          {
+            "title": "VPN Encryption Methods",
+            "url": "https://example.com/vpn-encryption"
+          }
+        ]
+      },
+      "difficulty": "hard",
+      "tags": [
+        "vpn",
+        "ipsec",
+        "ssl",
+        "security",
+        "encryption"
+      ],
+      "eveNgTopologyId": "topo_404",
+      "createdAt": "2024-01-21T15:10:00Z"
+    },
+    {
+      "id": "8",
+      "name": "Basic Network Troubleshooting",
+      "description": {
+        "overview": "Комплексная лабораторная работа по отработке методик диагностики и устранения неисправностей в компьютерных сетях. Студенты изучат системный подход к troubleshooting, освоят использование диагностических инструментов (ping, traceroute, Wireshark), научатся идентифицировать распространенные проблемы connectivity и производительности, а также документировать процесс решения проблем в соответствии с лучшими практиками индустрии.",
+        "objectives": [
+          "Identify common network connectivity issues",
+          "Use diagnostic tools for problem isolation",
+          "Implement systematic troubleshooting methodology",
+          "Document troubleshooting process and solutions"
+        ],
+        "resources": [
+          {
+            "title": "Network Troubleshooting Methodology",
+            "url": "https://example.com/troubleshooting-method"
+          },
+          {
+            "title": "Diagnostic Tools Guide",
+            "url": "https://example.com/diagnostic-tools"
+          },
+          {
+            "title": "Common Network Issues Reference",
+            "url": "https://example.com/network-issues"
+          }
+        ]
+      },
+      "difficulty": "easy",
+      "tags": [
+        "troubleshooting",
+        "basic",
+        "diagnostics",
+        "network"
+      ],
+      "eveNgTopologyId": "topo_505",
+      "createdAt": "2024-01-22T08:45:00Z"
+    },
+    {
+      "id": "9",
+      "name": "QoS Configuration",
+      "description": {
+        "overview": "Специализированная лабораторная работа по реализации механизмов качества обслуживания (Quality of Service) для управления пропускной способностью и приоритезации сетевого трафика. Студенты научатся классифицировать различные типы трафика (голос, видео, данные), настраивать политики маркировки пакетов, управлять очередями и распределением bandwidth, а также мониторить и оптимизировать производительность QoS в условиях ограниченных сетевых ресурсов.",
+        "objectives": [
+          "Configure QoS policies for different traffic types",
+          "Implement traffic classification and marking",
+          "Set up bandwidth allocation and queuing",
+          "Monitor and optimize QoS performance"
+        ],
+        "resources": [
+          {
+            "title": "QoS Configuration Guide",
+            "url": "https://example.com/qos-guide"
+          },
+          {
+            "title": "Traffic Prioritization Strategies",
+            "url": "https://example.com/traffic-prioritization"
+          },
+          {
+            "title": "Bandwidth Management Best Practices",
+            "url": "https://example.com/bandwidth-management"
+          }
+        ]
+      },
+      "difficulty": "hard",
+      "tags": [
+        "qos",
+        "quality",
+        "bandwidth",
+        "management"
+      ],
+      "eveNgTopologyId": "topo_606",
+      "createdAt": "2024-01-23T12:30:00Z"
+    },
+    {
+      "id": "10",
+      "name": "IPv6 Migration Lab",
+      "description": {
+        "overview": "Практическая лабораторная работа по планированию и выполнению миграции с IPv4 на IPv6 с использованием dual-stack технологии и различных стратегий перехода. Студенты получат опыт настройки IPv6-адресации, маршрутизации, DNS и сетевых служб в смешанной среде, изучат методы тестирования совместимости приложений и разработают пошаговый план миграции, минимизирующий воздействие на производственные сервисы.",
+        "objectives": [
+          "Configure dual-stack IPv4/IPv6 environment",
+          "Implement IPv6 addressing and routing",
+          "Test IPv6 connectivity and services",
+          "Plan and execute migration strategy"
+        ],
+        "resources": [
+          {
+            "title": "IPv6 Migration Strategies",
+            "url": "https://example.com/ipv6-migration"
+          },
+          {
+            "title": "Dual-Stack Configuration Guide",
+            "url": "https://example.com/dual-stack"
+          },
+          {
+            "title": "IPv6 Addressing Best Practices",
+            "url": "https://example.com/ipv6-addressing"
+          }
+        ]
+      },
+      "difficulty": "medium",
+      "tags": [
+        "ipv6",
+        "migration",
+        "transition",
+        "network"
+      ],
+      "eveNgTopologyId": "topo_707",
+      "createdAt": "2024-01-24T10:15:00Z"
+    },
+    {
+      "id": "11",
+      "name": "DNS Server Configuration",
+      "description": {
+        "overview": "Комплексная лабораторная работа по развертыванию и настройке DNS-серверов для обеспечения разрешения доменных имен в корпоративной сети. Студенты освоят создание зон прямого и обратного просмотра, настройку мастер- и слейв-серверов, конфигурацию рекурсивных запросов и кэширования, а также изучат методы обеспечения безопасности DNS-инфраструктуры через DNSSEC и защиту от DNS-атак.",
+        "objectives": [
+          "Configure primary and secondary DNS servers",
+          "Create forward and reverse lookup zones",
+          "Implement DNS caching and recursion",
+          "Secure DNS infrastructure with DNSSEC"
+        ],
+        "resources": [
+          {
+            "title": "DNS Server Administration Guide",
+            "url": "https://example.com/dns-administration"
+          },
+          {
+            "title": "DNSSEC Implementation Handbook",
+            "url": "https://example.com/dnssec-handbook"
+          },
+          {
+            "title": "DNS Security Best Practices",
+            "url": "https://example.com/dns-security"
+          }
+        ]
+      },
+      "difficulty": "medium",
+      "tags": [
+        "dns",
+        "server",
+        "configuration",
+        "domain"
+      ],
+      "eveNgTopologyId": "topo_808",
+      "createdAt": "2024-01-25T14:20:00Z"
+    },
+    {
+      "id": "12",
+      "name": "Load Balancing Setup",
+      "description": {
+        "overview": "Продвинутая лабораторная работа по реализации балансировки нагрузки для обеспечения высокой доступности веб-сервисов и приложений. Студенты изучат различные алгоритмы распределения трафика, настройку health checks для мониторинга состояния серверов, конфигурацию persistence сессий и методы оптимизации производительности. Особое внимание уделяется отказоустойчивости и автоматическому восстановлению при сбоях серверных компонентов.",
+        "objectives": [
+          "Configure load balancing algorithms",
+          "Set up server health monitoring",
+          "Implement session persistence",
+          "Test failover and recovery scenarios"
+        ],
+        "resources": [
+          {
+            "title": "Load Balancing Architectures",
+            "url": "https://example.com/load-balancing-arch"
+          },
+          {
+            "title": "High Availability Design Patterns",
+            "url": "https://example.com/ha-patterns"
+          },
+          {
+            "title": "Performance Optimization Guide",
+            "url": "https://example.com/performance-optimization"
+          }
+        ]
+      },
+      "difficulty": "hard",
+      "tags": [
+        "loadbalancing",
+        "availability",
+        "performance",
+        "network"
+      ],
+      "eveNgTopologyId": "topo_909",
+      "createdAt": "2024-01-26T16:30:00Z"
+    },
+    {
+      "id": "13",
+      "name": "Basic Network Topology",
+      "description": {
+        "overview": "Фундаментальная лабораторная работа по проектированию и реализации базовых сетевых топологий для начинающих сетевых инженеров. Студенты освоят принципы иерархического сетевого дизайна, научатся выбирать оптимальные топологии для различных сценариев развертывания, настраивать базовые сетевые службы и проводить тестирование connectivity между всеми компонентами сети. Лаборатория охватывает звездообразные, кольцевые и ячеистые топологии.",
+        "objectives": [
+          "Design hierarchical network topology",
+          "Implement star and mesh topologies",
+          "Configure basic network services",
+          "Test end-to-end connectivity"
+        ],
+        "resources": [
+          {
+            "title": "Network Design Fundamentals",
+            "url": "https://example.com/network-design"
+          },
+          {
+            "title": "Topology Selection Guide",
+            "url": "https://example.com/topology-selection"
+          },
+          {
+            "title": "Basic Network Configuration",
+            "url": "https://example.com/basic-network-config"
+          }
+        ]
+      },
+      "difficulty": "easy",
+      "tags": [
+        "topology",
+        "basic",
+        "design",
+        "network"
+      ],
+      "eveNgTopologyId": "topo_1010",
+      "createdAt": "2024-01-27T09:45:00Z"
+    },
+    {
+      "id": "14",
+      "name": "Advanced Firewall Rules",
+      "description": {
+        "overview": "Экспертная лабораторная работа по созданию сложных правил межсетевого экрана для защиты корпоративной сети от современных угроз. Студенты изучат продвинутые техники фильтрации на основе приложений, настройку DMZ-зон, реализацию threat prevention policies и интеграцию с системами обнаружения вторжений. Особое внимание уделяется созданию минимально необходимых правил безопасности и аудиту существующих конфигураций.",
+        "objectives": [
+          "Create application-aware firewall rules",
+          "Configure DMZ and security zones",
+          "Implement threat prevention policies",
+          "Audit and optimize existing rulesets"
+        ],
+        "resources": [
+          {
+            "title": "Advanced Firewall Administration",
+            "url": "https://example.com/advanced-firewall"
+          },
+          {
+            "title": "Security Zone Design Guide",
+            "url": "https://example.com/security-zones"
+          },
+          {
+            "title": "Threat Prevention Strategies",
+            "url": "https://example.com/threat-prevention"
+          }
+        ]
+      },
+      "difficulty": "hard",
+      "tags": [
+        "firewall",
+        "rules",
+        "advanced",
+        "security"
+      ],
+      "eveNgTopologyId": "topo_1111",
+      "createdAt": "2024-01-28T11:15:00Z"
+    },
+    {
+      "id": "15",
+      "name": "Network Automation",
+      "description": {
+        "overview": "Инновационная лабораторная работа по автоматизации сетевых операций с использованием Python, Ansible и REST API сетевого оборудования. Студенты освоят написание скриптов для массовой конфигурации устройств, создание шаблонов конфигураций, автоматическое создание отчетов и мониторинг изменений в сети. Лаборатория охватывает современные подходы к Infrastructure as Code и DevOps практикам в сетевой инженерии.",
+        "objectives": [
+          "Develop Python scripts for network automation",
+          "Create Ansible playbooks for device configuration",
+          "Implement REST API integration",
+          "Build automated reporting systems"
+        ],
+        "resources": [
+          {
+            "title": "Network Automation with Python",
+            "url": "https://example.com/network-automation"
+          },
+          {
+            "title": "Ansible for Network Engineers",
+            "url": "https://example.com/ansible-networking"
+          },
+          {
+            "title": "REST API Integration Guide",
+            "url": "https://example.com/rest-api-networking"
+          }
+        ]
+      },
+      "difficulty": "medium",
+      "tags": [
+        "automation",
+        "python",
+        "api",
+        "scripting"
+      ],
+      "eveNgTopologyId": "topo_1212",
+      "createdAt": "2024-01-29T13:40:00Z"
+    },
+    {
+      "id": "16",
+      "name": "Network Virtualization",
+      "description": {
+        "overview": "Передовая лабораторная работа по реализации технологий сетевой виртуализации для создания гибкой и масштабируемой инфраструктуры. Студенты изучат настройку VXLAN, NVGRE и Geneve туннелей, создание overlay-сетей, управление виртуальными коммутаторами и интеграцию с платформами виртуализации. Особое внимание уделяется обеспечению безопасности в виртуальных средах и миграции традиционных сетей в программно-определяемые архитектуры.",
+        "objectives": [
+          "Configure VXLAN and overlay networks",
+          "Set up virtual switches and routers",
+          "Implement network virtualization security",
+          "Integrate with hypervisor platforms"
+        ],
+        "resources": [
+          {
+            "title": "Network Virtualization Technologies",
+            "url": "https://example.com/network-virtualization"
+          },
+          {
+            "title": "SDN Implementation Guide",
+            "url": "https://example.com/sdn-implementation"
+          },
+          {
+            "title": "Overlay Network Design",
+            "url": "https://example.com/overlay-networks"
+          }
+        ]
+      },
+      "difficulty": "hard",
+      "tags": [
+        "virtualization",
+        "sdn",
+        "vxlan",
+        "overlay"
+      ],
+      "eveNgTopologyId": "topo_1313",
+      "createdAt": "2024-01-30T10:25:00Z"
+    },
+    {
+      "id": "17",
+      "name": "Wireless Security Audit",
+      "description": {
+        "overview": "Специализированная лабораторная работа по проведению комплексного аудита безопасности беспроводных сетей с использованием профессиональных инструментов тестирования на проникновение. Студенты освоят методы обнаружения скрытых сетей, тестирования устойчивости протоколов шифрования, выявления уязвимостей в конфигурациях точек доступа и разработки рекомендаций по усилению защиты WLAN-инфраструктуры.",
+        "objectives": [
+          "Perform wireless network discovery",
+          "Test WPA2/WPA3 encryption strength",
+          "Identify access point vulnerabilities",
+          "Develop security improvement recommendations"
+        ],
+        "resources": [
+          {
+            "title": "Wireless Penetration Testing",
+            "url": "https://example.com/wireless-pentest"
+          },
+          {
+            "title": "WLAN Security Assessment",
+            "url": "https://example.com/wlan-assessment"
+          },
+          {
+            "title": "Wireless Vulnerability Database",
+            "url": "https://example.com/wireless-vulns"
+          }
+        ]
+      },
+      "difficulty": "medium",
+      "tags": [
+        "wireless",
+        "security",
+        "audit",
+        "pentest"
+      ],
+      "eveNgTopologyId": "topo_1414",
+      "createdAt": "2024-01-31T14:15:00Z"
+    },
+    {
+      "id": "18",
+      "name": "Cloud Networking",
+      "description": {
+        "overview": "Современная лабораторная работа по настройке сетевой инфраструктуры в облачных средах AWS, Azure и Google Cloud. Студенты изучат создание VPC/VNet, настройку межрегионального пиринга, конфигурацию облачных балансировщиков нагрузки и реализацию гибридных подключений к локальным центрам обработки данных. Особое внимание уделяется безопасности, мониторингу и оптимизации затрат в облачных сетях.",
+        "objectives": [
+          "Configure cloud VPC/VNet networks",
+          "Set up cross-region peering",
+          "Implement cloud load balancers",
+          "Establish hybrid cloud connections"
+        ],
+        "resources": [
+          {
+            "title": "AWS Networking Guide",
+            "url": "https://example.com/aws-networking"
+          },
+          {
+            "title": "Azure Network Services",
+            "url": "https://example.com/azure-networking"
+          },
+          {
+            "title": "Cloud Security Best Practices",
+            "url": "https://example.com/cloud-security"
+          }
+        ]
+      },
+      "difficulty": "medium",
+      "tags": [
+        "cloud",
+        "aws",
+        "azure",
+        "networking"
+      ],
+      "eveNgTopologyId": "topo_1515",
+      "createdAt": "2024-02-01T11:30:00Z"
+    },
+    {
+      "id": "19",
+      "name": "VoIP Configuration",
+      "description": {
+        "overview": "Специализированная лабораторная работа по настройке инфраструктуры VoIP для организации корпоративной телефонии. Студенты освоят конфигурацию IP-АТС, настройку SIP-транков, обеспечение качества голосовой связи через QoS и диагностику распространенных проблем VoIP-соединений. Лаборатория включает создание полного цикла голосовой связи от пользовательских устройств до внешних операторов связи.",
+        "objectives": [
+          "Configure IP PBX systems",
+          "Set up SIP trunks and codecs",
+          "Implement VoIP quality of service",
+          "Troubleshoot voice quality issues"
+        ],
+        "resources": [
+          {
+            "title": "VoIP Implementation Guide",
+            "url": "https://example.com/voip-implementation"
+          },
+          {
+            "title": "SIP Protocol Reference",
+            "url": "https://example.com/sip-protocol"
+          },
+          {
+            "title": "Voice Quality Optimization",
+            "url": "https://example.com/voice-quality"
+          }
+        ]
+      },
+      "difficulty": "medium",
+      "tags": [
+        "voip",
+        "sip",
+        "telephony",
+        "qos"
+      ],
+      "eveNgTopologyId": "topo_1616",
+      "createdAt": "2024-02-02T09:20:00Z"
+    },
+    {
+      "id": "20",
+      "name": "Network Disaster Recovery",
+      "description": {
+        "overview": "Комплексная лабораторная работа по планированию и реализации стратегий аварийного восстановления сетевой инфраструктуры. Студенты изучат создание резервных конфигураций, настройку автоматического переключения на backup-каналы, организацию географически распределенных решений и проведение учебных аварийных учений. Особое внимание уделяется минимизации времени восстановления и обеспечению непрерывности бизнес-процессов.",
+        "objectives": [
+          "Develop network disaster recovery plan",
+          "Configure automatic failover mechanisms",
+          "Implement geographic redundancy",
+          "Conduct recovery drills and testing"
+        ],
+        "resources": [
+          {
+            "title": "Disaster Recovery Planning",
+            "url": "https://example.com/dr-planning"
+          },
+          {
+            "title": "Business Continuity Strategies",
+            "url": "https://example.com/business-continuity"
+          },
+          {
+            "title": "High Availability Architectures",
+            "url": "https://example.com/ha-architectures"
+          }
+        ]
+      },
+      "difficulty": "hard",
+      "tags": [
+        "disaster-recovery",
+        "high-availability",
+        "backup",
+        "redundancy"
+      ],
+      "eveNgTopologyId": "topo_1717",
+      "createdAt": "2024-02-03T16:45:00Z"
+    },
+    {
+      "id": "21",
+      "name": "Multi-Protocol Label Switching",
+      "description": {
+        "overview": "Продвинутая лабораторная работа по настройке технологии MPLS для создания масштабируемых VPN-сетей в инфраструктуре интернет-провайдера. Студенты освоят конфигурацию LDP, создание VRF-инстансов, настройку MP-BGP для обмена маршрутами между сайтами и реализацию различных типов MPLS VPN. Особое внимание уделяется обеспечению изоляции трафика клиентов и оптимизации маршрутизации в крупных сетевых инфраструктурах.",
+        "objectives": [
+          "Configure MPLS LDP protocol",
+          "Create VRF instances and route distinguishers",
+          "Implement MP-BGP for VPNv4 routes",
+          "Set up layer 3 VPN services"
+        ],
+        "resources": [
+          {
+            "title": "MPLS Configuration Guide",
+            "url": "https://example.com/mpls-configuration"
+          },
+          {
+            "title": "MPLS VPN Architectures",
+            "url": "https://example.com/mpls-vpn-arch"
+          },
+          {
+            "title": "Service Provider Networking",
+            "url": "https://example.com/service-provider"
+          }
+        ]
+      },
+      "difficulty": "hard",
+      "tags": [
+        "mpls",
+        "vpn",
+        "service-provider",
+        "bgp"
+      ],
+      "eveNgTopologyId": "topo_1818",
+      "createdAt": "2024-02-04T13:20:00Z"
+    },
+    {
+      "id": "22",
+      "name": "Network Access Control",
+      "description": {
+        "overview": "Комплексная лабораторная работа по внедрению системы контроля доступа к сети на основе стандарта 802.1X. Студенты изучат настройку RADIUS-серверов, конфигурацию supplicant на клиентских устройствах, создание политик авторизации и методов аутентификации. Лаборатория охватывает интеграцию с Active Directory, настройку гостевого доступа и создание гибких правил доступа на основе ролей пользователей и характеристик устройств.",
+        "objectives": [
+          "Configure 802.1X authentication",
+          "Set up RADIUS server integration",
+          "Implement role-based access policies",
+          "Create guest access solutions"
+        ],
+        "resources": [
+          {
+            "title": "NAC Implementation Guide",
+            "url": "https://example.com/nac-implementation"
+          },
+          {
+            "title": "802.1X Deployment Best Practices",
+            "url": "https://example.com/8021x-deployment"
+          },
+          {
+            "title": "Network Access Security",
+            "url": "https://example.com/network-access-security"
+          }
+        ]
+      },
+      "difficulty": "medium",
+      "tags": [
+        "nac",
+        "802.1x",
+        "radius",
+        "security"
+      ],
+      "eveNgTopologyId": "topo_1919",
+      "createdAt": "2024-02-05T10:35:00Z"
+    },
+    {
+      "id": "23",
+      "name": "Software-Defined WAN",
+      "description": {
+        "overview": "Инновационная лабораторная работа по развертыванию программно-определяемых глобальных сетей для оптимизации трафика между распределенными филиалами. Студенты освоят настройку SD-WAN контроллеров, создание политик качества обслуживания для различных приложений, мониторинг производительности каналов связи и автоматическое переключение трафика между интернет-каналами и MPLS. Особое внимание уделяется снижению затрат и улучшению пользовательского опыта.",
+        "objectives": [
+          "Configure SD-WAN controllers",
+          "Create application-aware routing policies",
+          "Monitor WAN link performance",
+          "Implement automatic path selection"
+        ],
+        "resources": [
+          {
+            "title": "SD-WAN Architecture Guide",
+            "url": "https://example.com/sdwan-architecture"
+          },
+          {
+            "title": "WAN Optimization Techniques",
+            "url": "https://example.com/wan-optimization"
+          },
+          {
+            "title": "Branch Network Modernization",
+            "url": "https://example.com/branch-modernization"
+          }
+        ]
+      },
+      "difficulty": "hard",
+      "tags": [
+        "sd-wan",
+        "wan",
+        "optimization",
+        "branch"
+      ],
+      "eveNgTopologyId": "topo_2020",
+      "createdAt": "2024-02-06T15:40:00Z"
+    },
+    {
+      "id": "24",
+      "name": "Industrial Network Security",
+      "description": {
+        "overview": "Специализированная лабораторная работа по обеспечению безопасности сетей промышленных систем управления и SCADA. Студенты изучат особенности промышленных протоколов, настройку сегментации сетей OT, создание демилитаризованных зон между IT и OT сетями и реализацию мониторинга аномальной активности. Лаборатория охватывает требования стандартов IEC 62443 и методы защиты критической инфраструктуры от кибератак.",
+        "objectives": [
+          "Segment industrial control networks",
+          "Configure OT-IT DMZ security",
+          "Monitor industrial protocol traffic",
+          "Implement ICS security controls"
+        ],
+        "resources": [
+          {
+            "title": "Industrial Network Security",
+            "url": "https://example.com/industrial-security"
+          },
+          {
+            "title": "SCADA Network Protection",
+            "url": "https://example.com/scada-protection"
+          },
+          {
+            "title": "IEC 62443 Compliance Guide",
+            "url": "https://example.com/iec-62443"
+          }
+        ]
+      },
+      "difficulty": "hard",
+      "tags": [
+        "industrial",
+        "scada",
+        "ot",
+        "security"
+      ],
+      "eveNgTopologyId": "topo_2121",
+      "createdAt": "2024-02-07T11:25:00Z"
+    },
+    {
+      "id": "25",
+      "name": "Network Forensic Analysis",
+      "description": {
+        "overview": "Экспертная лабораторная работа по проведению сетевой криминалистики и расследованию инцидентов информационной безопасности. Студенты освоят методы сбора и анализа сетевых логов, использование инструментов для глубокого инспектирования пакетов, реконструкцию атак по сетевым артефактам и создание доказательной базы. Особое внимание уделяется юридическим аспектам и правилам работы с цифровыми доказательствами.",
+        "objectives": [
+          "Collect and analyze network logs",
+          "Perform deep packet inspection",
+          "Reconstruct attack timelines",
+          "Create forensic investigation reports"
+        ],
+        "resources": [
+          {
+            "title": "Network Forensic Handbook",
+            "url": "https://example.com/network-forensics"
+          },
+          {
+            "title": "Incident Response Procedures",
+            "url": "https://example.com/incident-response"
+          },
+          {
+            "title": "Digital Evidence Collection",
+            "url": "https://example.com/digital-evidence"
+          }
+        ]
+      },
+      "difficulty": "hard",
+      "tags": [
+        "forensics",
+        "incident-response",
+        "security",
+        "investigation"
+      ],
+      "eveNgTopologyId": "topo_2222",
+      "createdAt": "2024-02-08T14:15:00Z"
+    },
+    {
+      "id": "26",
+      "name": "Container Networking",
+      "description": {
+        "overview": "Современная лабораторная работа по настройке сетевой инфраструктуры для контейнерных платформ Docker и Kubernetes. Студенты изучат создание overlay-сетей для контейнеров, настройку service mesh, реализацию сетевых политик безопасности и интеграцию с системами service discovery. Лаборатория охватывает особенности работы CNI-плагинов, балансировку нагрузки между подами и обеспечение отказоустойчивости в микросервисных архитектурах.",
+        "objectives": [
+          "Configure container overlay networks",
+          "Implement Kubernetes network policies",
+          "Set up service mesh infrastructure",
+          "Optimize container network performance"
+        ],
+        "resources": [
+          {
+            "title": "Kubernetes Networking Guide",
+            "url": "https://example.com/kubernetes-networking"
+          },
+          {
+            "title": "Container Network Interfaces",
+            "url": "https://example.com/cni-plugins"
+          },
+          {
+            "title": "Microservices Network Architecture",
+            "url": "https://example.com/microservices-network"
+          }
+        ]
+      },
+      "difficulty": "medium",
+      "tags": [
+        "containers",
+        "kubernetes",
+        "docker",
+        "microservices"
+      ],
+      "eveNgTopologyId": "topo_2323",
+      "createdAt": "2024-02-09T09:50:00Z"
+    },
+    {
+      "id": "27",
+      "name": "Network Capacity Planning",
+      "description": {
+        "overview": "Стратегическая лабораторная работа по планированию пропускной способности сетевой инфраструктуры на основе анализа трафика и прогнозирования роста. Студенты освоят методы сбора статистики использования сети, построения трендов, расчета требований к bandwidth и разработки планов модернизации. Особое внимание уделяется экономическому обоснованию инвестиций в сетевую инфраструктуру и созданию долгосрочных стратегий развития.",
+        "objectives": [
+          "Analyze network traffic patterns",
+          "Forecast bandwidth requirements",
+          "Develop capacity upgrade plans",
+          "Create network investment justifications"
+        ],
+        "resources": [
+          {
+            "title": "Network Capacity Planning",
+            "url": "https://example.com/capacity-planning"
+          },
+          {
+            "title": "Traffic Analysis Techniques",
+            "url": "https://example.com/traffic-analysis"
+          },
+          {
+            "title": "Network Investment Strategies",
+            "url": "https://example.com/network-investment"
+          }
+        ]
+      },
+      "difficulty": "medium",
+      "tags": [
+        "capacity-planning",
+        "analytics",
+        "forecasting",
+        "strategy"
+      ],
+      "eveNgTopologyId": "topo_2424",
+      "createdAt": "2024-02-10T13:30:00Z"
+    },
+    {
+      "id": "28",
+      "name": "Zero Trust Architecture",
+      "description": {
+        "overview": "Передовая лабораторная работа по внедрению архитектуры нулевого доверия для современной корпоративной сети. Студенты изучат принципы 'never trust, always verify', настройку микросетевой сегментации, реализацию политик наименьших привилегий и создание системы непрерывной аутентификации. Лаборатория охватывает интеграцию с системами идентификации, мониторинг поведения пользователей и автоматическое применение политик безопасности.",
+        "objectives": [
+          "Implement micro-segmentation policies",
+          "Configure continuous authentication",
+          "Set up identity-aware networking",
+          "Create zero trust enforcement points"
+        ],
+        "resources": [
+          {
+            "title": "Zero Trust Implementation Guide",
+            "url": "https://example.com/zero-trust"
+          },
+          {
+            "title": "Identity-Centric Security",
+            "url": "https://example.com/identity-security"
+          },
+          {
+            "title": "Microsegmentation Strategies",
+            "url": "https://example.com/microsegmentation"
+          }
+        ]
+      },
+      "difficulty": "hard",
+      "tags": [
+        "zero-trust",
+        "security",
+        "identity",
+        "microsegmentation"
+      ],
+      "eveNgTopologyId": "topo_2525",
+      "createdAt": "2024-02-11T16:20:00Z"
+    },
+    {
+      "id": "29",
+      "name": "Network Automation with APIs",
+      "description": {
+        "overview": "Практическая лабораторная работа по использованию REST API сетевого оборудования для создания систем автоматизированного управления и мониторинга. Студенты освоят работу с API Cisco DNA Center, Meraki, Arista CloudVision и других платформ, научатся создавать скрипты для автоматической конфигурации, собирать телеметрию и строить кастомные дашборды. Особое внимание уделяется обработке ошибок и созданию отказоустойчивых систем автоматизации.",
+        "objectives": [
+          "Develop REST API clients for network devices",
+          "Create automated configuration scripts",
+          "Implement network telemetry collection",
+          "Build custom monitoring dashboards"
+        ],
+        "resources": [
+          {
+            "title": "Network REST API Reference",
+            "url": "https://example.com/network-api"
+          },
+          {
+            "title": "API Automation Patterns",
+            "url": "https://example.com/api-automation"
+          },
+          {
+            "title": "Network Telemetry Guide",
+            "url": "https://example.com/network-telemetry"
+          }
+        ]
+      },
+      "difficulty": "medium",
+      "tags": [
+        "api",
+        "automation",
+        "rest",
+        "telemetry"
+      ],
+      "eveNgTopologyId": "topo_2626",
+      "createdAt": "2024-02-12T10:45:00Z"
+    },
+    {
+      "id": "30",
+      "name": "Multi-Cloud Network Integration",
+      "description": {
+        "overview": "Комплексная лабораторная работа по созданию единой сетевой инфраструктуры, объединяющей multiple облачные провайдеры и локальные центры обработки данных. Студенты изучат настройку транзитных шлюзов, создание глобальных ускорителей, реализацию единой политики безопасности и оптимизацию маршрутизации между различными облачными средами. Особое внимание уделяется обеспечению отказоустойчивости и минимизации задержек в распределенных архитектурах.",
+        "objectives": [
+          "Configure multi-cloud transit gateways",
+          "Implement global load balancing",
+          "Create unified security policies",
+          "Optimize cross-cloud routing"
+        ],
+        "resources": [
+          {
+            "title": "Multi-Cloud Networking Guide",
+            "url": "https://example.com/multi-cloud-networking"
+          },
+          {
+            "title": "Cloud Interconnect Solutions",
+            "url": "https://example.com/cloud-interconnect"
+          },
+          {
+            "title": "Hybrid Cloud Architecture",
+            "url": "https://example.com/hybrid-cloud"
+          }
+        ]
+      },
+      "difficulty": "hard",
+      "tags": [
+        "multi-cloud",
+        "hybrid",
+        "integration",
+        "global"
+      ],
+      "eveNgTopologyId": "topo_2727",
+      "createdAt": "2024-02-13T14:55:00Z"
+    },
+    {
+      "id": "31",
+      "name": "Network Performance Optimization",
+      "description": {
+        "overview": "Экспертная лабораторная работа по тонкой настройке производительности сетевой инфраструктуры для достижения максимальной эффективности. Студенты освоят методы анализа bottlenecks, оптимизации TCP-параметров, настройки buffer management и реализации advanced QoS. Лаборатория охватывает использование специализированных инструментов для измерения производительности, создание baseline метрик и проведение A/B тестирования оптимизаций.",
+        "objectives": [
+          "Identify and resolve performance bottlenecks",
+          "Optimize TCP stack parameters",
+          "Configure advanced buffer management",
+          "Implement performance monitoring"
+        ],
+        "resources": [
+          {
+            "title": "Network Performance Tuning",
+            "url": "https://example.com/performance-tuning"
+          },
+          {
+            "title": "TCP Optimization Guide",
+            "url": "https://example.com/tcp-optimization"
+          },
+          {
+            "title": "Advanced QoS Techniques",
+            "url": "https://example.com/advanced-qos"
+          }
+        ]
+      },
+      "difficulty": "hard",
+      "tags": [
+        "performance",
+        "optimization",
+        "tuning",
+        "qos"
+      ],
+      "eveNgTopologyId": "topo_2828",
+      "createdAt": "2024-02-14T11:10:00Z"
+    },
+    {
+      "id": "32",
+      "name": "IoT Network Infrastructure",
+      "description": {
+        "overview": "Специализированная лабораторная работа по построению сетевой инфраструктуры для интернета вещей с поддержкой разнородных устройств и протоколов. Студенты изучат настройку LPWAN сетей, организацию шлюзов для IoT-устройств, обеспечение безопасности данных от сенсоров и интеграцию с облачными IoT-платформами. Особое внимание уделяется масштабируемости, энергоэффективности и обеспечению надежности в условиях ограниченных ресурсов.",
+        "objectives": [
+          "Configure LPWAN and IoT gateways",
+          "Implement IoT security protocols",
+          "Set up device management systems",
+          "Integrate with cloud IoT platforms"
+        ],
+        "resources": [
+          {
+            "title": "IoT Network Architecture",
+            "url": "https://example.com/iot-architecture"
+          },
+          {
+            "title": "LPWAN Technologies Guide",
+            "url": "https://example.com/lpwan-technologies"
+          },
+          {
+            "title": "IoT Security Framework",
+            "url": "https://example.com/iot-security"
+          }
+        ]
+      },
+      "difficulty": "medium",
+      "tags": [
+        "iot",
+        "lpwan",
+        "sensors",
+        "gateway"
+      ],
+      "eveNgTopologyId": "topo_2929",
+      "createdAt": "2024-02-15T15:25:00Z"
+    },
+    {
+      "id": "33",
+      "name": "Network Documentation Automation",
+      "description": {
+        "overview": "Инновационная лабораторная работа по автоматизации процессов документирования сетевой инфраструктуры с использованием современных инструментов и методологий. Студенты освоят создание скриптов для автоматического сбора информации о сети, генерации диаграмм топологии, ведения инвентаризации оборудования и обновления документации при изменениях. Особое внимание уделяется интеграции с системами CMDB и созданию единого источника истины о сетевой инфраструктуре.",
+        "objectives": [
+          "Develop automated network discovery scripts",
+          "Create dynamic topology diagrams",
+          "Implement CMDB integration",
+          "Build documentation update workflows"
+        ],
+        "resources": [
+          {
+            "title": "Network Documentation Best Practices",
+            "url": "https://example.com/network-documentation"
+          },
+          {
+            "title": "Automated Diagram Generation",
+            "url": "https://example.com/auto-diagrams"
+          },
+          {
+            "title": "CMDB Integration Guide",
+            "url": "https://example.com/cmdb-integration"
+          }
+        ]
+      },
+      "difficulty": "medium",
+      "tags": [
+        "documentation",
+        "automation",
+        "cmdb",
+        "diagrams"
+      ],
+      "eveNgTopologyId": "topo_3030",
+      "createdAt": "2024-02-16T09:40:00Z"
+    },
+    {
+      "id": "34",
+      "name": "5G Network Slicing",
+      "description": {
+        "overview": "Передовая лабораторная работа по настройке сетевого срезания в инфраструктуре 5G для предоставления специализированных услуг различным категориям пользователей. Студенты изучат создание end-to-end сетевых срезов, настройку политик изоляции трафика, обеспечение качества обслуживания для критических приложений и мониторинг производительности срезов. Лаборатория охватывает как радиочастотную часть, так и core network 5G.",
+        "objectives": [
+          "Configure 5G network slices",
+          "Implement slice isolation policies",
+          "Set up slice performance monitoring",
+          "Create service-specific slice configurations"
+        ],
+        "resources": [
+          {
+            "title": "5G Network Slicing Guide",
+            "url": "https://example.com/5g-slicing"
+          },
+          {
+            "title": "Mobile Network Architecture",
+            "url": "https://example.com/mobile-architecture"
+          },
+          {
+            "title": "Network Function Virtualization",
+            "url": "https://example.com/nfv"
+          }
+        ]
+      },
+      "difficulty": "hard",
+      "tags": [
+        "5g",
+        "slicing",
+        "mobile",
+        "nfv"
+      ],
+      "eveNgTopologyId": "topo_3131",
+      "createdAt": "2024-02-17T13:50:00Z"
+    },
+    {
+      "id": "35",
+      "name": "Blockchain Network Infrastructure",
+      "description": {
+        "overview": "Экспериментальная лабораторная работа по построению сетевой инфраструктуры для распределенных реестров и блокчейн-платформ. Студенты изучат настройку peer-to-peer сетей, организацию консенсус-нод, обеспечение безопасности транзакций и оптимизацию производительности в децентрализованных системах. Особое внимание уделяется сетевым аспектам работы смарт-контрактов и обеспечению масштабируемости блокчейн-инфраструктуры.",
+        "objectives": [
+          "Configure blockchain peer networks",
+          "Set up consensus node infrastructure",
+          "Implement transaction security",
+          "Optimize blockchain network performance"
+        ],
+        "resources": [
+          {
+            "title": "Blockchain Network Architecture",
+            "url": "https://example.com/blockchain-network"
+          },
+          {
+            "title": "Distributed Ledger Technologies",
+            "url": "https://example.com/dlt-technologies"
+          },
+          {
+            "title": "Cryptocurrency Network Security",
+            "url": "https://example.com/crypto-security"
+          }
+        ]
+      },
+      "difficulty": "hard",
+      "tags": [
+        "blockchain",
+        "p2p",
+        "distributed",
+        "crypto"
+      ],
+      "eveNgTopologyId": "topo_3232",
+      "createdAt": "2024-02-18T16:35:00Z"
+    },
+    {
+      "id": "36",
+      "name": "Quantum Network Security",
+      "description": {
+        "overview": "Футуристическая лабораторная работа по изучению основ квантовой криптографии и защите сетевой инфраструктуры от угроз, связанных с квантовыми вычислениями. Студенты освоят принципы квантового распределения ключей, настройку постквантовых алгоритмов шифрования и методы миграции на квантово-устойчивые протоколы. Лаборатория охватывает как теоретические основы, так и практические аспекты подготовки к эре квантовых компьютеров.",
+        "objectives": [
+          "Implement quantum key distribution",
+          "Configure post-quantum cryptography",
+          "Test quantum-resistant algorithms",
+          "Develop quantum migration strategy"
+        ],
+        "resources": [
+          {
+            "title": "Quantum Cryptography Guide",
+            "url": "https://example.com/quantum-crypto"
+          },
+          {
+            "title": "Post-Quantum Security",
+            "url": "https://example.com/post-quantum"
+          },
+          {
+            "title": "Quantum Network Fundamentals",
+            "url": "https://example.com/quantum-network"
+          }
+        ]
+      },
+      "difficulty": "hard",
+      "tags": [
+        "quantum",
+        "cryptography",
+        "security",
+        "future"
+      ],
+      "eveNgTopologyId": "topo_3333",
+      "createdAt": "2024-02-19T10:20:00Z"
+    },
+    {
+      "id": "37",
+      "name": "Edge Computing Networking",
+      "description": {
+        "overview": "Современная лабораторная работа по построению сетевой инфраструктуры для периферийных вычислений с низкой задержкой и высокой пропускной способностью. Студенты изучат настройку edge-шлюзов, организацию локальных сетей обработки данных, обеспечение синхронизации с центральными облаками и реализацию механизмов автономной работы. Особое внимание уделяется обеспечению безопасности в распределенных edge-средах и оптимизации трафика между edge-узлами.",
+        "objectives": [
+          "Configure edge computing gateways",
+          "Implement low-latency edge networks",
+          "Set up edge-cloud synchronization",
+          "Create autonomous edge operation"
+        ],
+        "resources": [
+          {
+            "title": "Edge Network Architecture",
+            "url": "https://example.com/edge-architecture"
+          },
+          {
+            "title": "Fog Computing Technologies",
+            "url": "https://example.com/fog-computing"
+          },
+          {
+            "title": "Distributed Edge Security",
+            "url": "https://example.com/edge-security"
+          }
+        ]
+      },
+      "difficulty": "medium",
+      "tags": [
+        "edge",
+        "computing",
+        "low-latency",
+        "distributed"
+      ],
+      "eveNgTopologyId": "topo_3434",
+      "createdAt": "2024-02-20T14:45:00Z"
+    },
+    {
+      "id": "38",
+      "name": "AI-Powered Network Operations",
+      "description": {
+        "overview": "Инновационная лабораторная работа по внедрению искусственного интеллекта и машинного обучения для автоматизации операций сетевого управления. Студенты освоят создание моделей для прогнозирования сбоев, настройку систем автоматического реагирования на инциденты, реализацию интеллектуального управления ресурсами и построение self-healing сетей. Особое внимание уделяется этическим аспектам использования AI и обеспечению прозрачности принимаемых решений.",
+        "objectives": [
+          "Develop AI models for network prediction",
+          "Implement automated incident response",
+          "Configure intelligent resource management",
+          "Create self-healing network mechanisms"
+        ],
+        "resources": [
+          {
+            "title": "AI in Network Operations",
+            "url": "https://example.com/ai-networking"
+          },
+          {
+            "title": "Machine Learning for Networks",
+            "url": "https://example.com/ml-networking"
+          },
+          {
+            "title": "Autonomous Network Systems",
+            "url": "https://example.com/autonomous-networks"
+          }
+        ]
+      },
+      "difficulty": "hard",
+      "tags": [
+        "ai",
+        "machine-learning",
+        "autonomous",
+        "operations"
+      ],
+      "eveNgTopologyId": "topo_3535",
+      "createdAt": "2024-02-21T12:15:00Z"
+    }
+  ]
+}

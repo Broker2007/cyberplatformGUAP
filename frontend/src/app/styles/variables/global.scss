@@ -1,0 +1,51 @@
+@font-face {
+    font-family: Gilroy-Bold;
+    src: url("shared/assets/fonts/gilroy-bold.ttf") format("truetype");
+    font-weight: 350;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: Gilroy;
+    src: url("shared/assets/fonts/gilroy-medium.ttf") format("truetype");
+    font-weight: 300;
+    font-style: normal;
+}
+
+:root {
+    --font-family-main: "Gilroy", arial, sans-serif;
+    --font-family-main-b: "Gilroy-Bold", arial, sans-serif;
+    --font-size-s: 15px;
+    --font-line-s: 23px;
+    --font-s: var(--font-size-s) / var(--font-line-s) var(--font-family-main);
+    --font-size-m: 15px;
+    --font-line-m: 23px;
+    --font-m: var(--font-size-m) / var(--font-line-m) var(--font-family-main);
+    --font-m-b: var(--font-size-m) / var(--font-line-m) var(--font-family-main-b);
+    --font-size-l: 20px;
+    --font-line-l: 28px;
+    --font-l-b: var(--font-size-l) / var(--font-line-l) var(--font-family-main-b);
+    --font-l: var(--font-size-l) / var(--font-line-l) var(--font-family-main);
+    --font-size-xl: 30px;
+    --font-line-xl: 38px;
+    --font-xl-b: var(--font-size-xl) / var(--font-line-xl) var(--font-family-main-b);
+
+    // цвета
+    --bg-color: #080808;
+    --bg-color-btn: #181818;
+    --inverted-bg-color: #0f0f0f;
+    --inverted-bg-color2: #0a0a0a;
+    --primary-color: #b4b4b4;
+    --gray-color: #525252;
+    --gray-color2: #303030;
+    --secondary-color: #2e2e2e;
+    --secondary-color2: #4a4a4a;
+    --green-color: #5c8662;
+    --blue-color: #0c87e1;
+    --yellow-color: #ddc176;
+    --red-color: #ff4d47;
+
+    // Размеры
+    --navbar-height: 85px;
+    --sidebar-width: 450px;
+}

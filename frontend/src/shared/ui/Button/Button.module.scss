@@ -1,0 +1,107 @@
+.Button {
+    cursor: pointer;
+    color: var(--primary-color);
+}
+
+.clear {
+    padding: 0;
+    border: none;
+    background: transparent;
+    outline: none;
+}
+
+.close {
+    color: var(--secondary-color);
+    border: none;
+    background-color: transparent;
+    font-size: 40px;
+    width: 35px;
+    height: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+}
+
+.play {
+    padding: 20px;
+    font: var(--font-l);
+    color: var(--primary-color);
+    display: flex;
+    justify-content: center;
+    border: none;
+    align-items: center;
+    gap: 20px;
+    border-radius: 26px;
+    background: linear-gradient(90deg, #e6164b, #2056ae, #41bdef);
+}
+
+.visit {
+    padding: 8px 40px;
+    font-size: 14px;
+    font-weight: 300;
+    color: white;
+    display: flex;
+    border-radius: 4px;
+    background: var(--green-color);
+    border: none;
+}
+
+.pagin_arrow {
+    padding-bottom: 3px;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    cursor: pointer;
+    border: none;
+    outline: none;
+
+    &:focus {
+        outline: none;
+    }
+}
+
+.pagin_page {
+    font-size: 24px;
+    font-weight: 300;
+    padding: 8px 14px;
+    min-width: 42px;
+    font-family: var(--font-family-number);
+    border: none;
+    background: transparent;
+    color: #b4b4b4;
+    border-radius: 7px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+
+    &:hover {
+        color: var(--green-color);
+        background-color: transparent;
+    }
+
+    &:focus {
+        outline: none;
+    }
+}
+
+.inline {
+    display: flex;
+    align-items: center;
+    border: none;
+    outline: none;
+}
+
+.outline {
+    padding: 20px;
+    font: var(--font-l);
+    border: 2px solid #ad46ff;
+    color: var(--primary-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    border-radius: 26px;
+    background: transparent;
+}

@@ -1,0 +1,71 @@
+.Navbar {
+    width: 100%;
+    height: var(--navbar-height);
+    background: var(--inverted-bg-color);
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    padding-top: 15px;
+    padding-bottom: 15px;
+
+    a {
+        text-decoration: none;
+        color: inherit;
+        outline: none;
+        border: none;
+        cursor: pointer;
+        -webkit-tap-highlight-color: transparent;
+        display: flex; /* чтобы иконки правильно отображались */
+        align-items: center;
+    }
+}
+
+.sidebar {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    gap: 30px;
+}
+
+.actions {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+}
+
+.block_logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.text_logo {
+    font-size: 24px;
+    color: var(--green-color);
+    transition: all 0.4s ease;
+}
+
+.link {
+    fill: #525252;
+    transition: all 0.2s ease;
+
+    &:hover {
+        fill: var(--green-color);
+    }
+}
+
+.profile {
+    width: 55px;
+    height: 55px;
+    background-color: var(--secondary-color);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.link_logo {
+    width: 54px;
+    height: 54px;
+}

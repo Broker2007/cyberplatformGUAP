@@ -1,0 +1,92 @@
+.name_group {
+    display: flex;
+    justify-content: space-between;
+    padding-left: 19px;
+    padding-right: 27px;
+    align-items: center;
+    height: 87px;
+    border: none;
+
+    .left_block {
+        display: flex;
+        justify-content: start;
+        align-items: center;
+        gap: 10px;
+
+        .group_img {
+            border-radius: 50%;
+            width: 63px;
+            height: 63px;
+            object-fit: cover;
+        }
+
+        .text {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: start;
+            gap: 5px;
+
+            .title {
+                font: var(--font-l-b);
+                color: var(--primary-color);
+            }
+
+            .quantity {
+                font: var(--font-s-b);
+                color: var(--gray-color);
+            }
+        }
+    }
+
+    .text_edit {
+        font: var(--font-s);
+        color: var(--gray-color);
+        align-self: center;
+        margin-top: 25px;
+    }
+
+    &.main {
+        padding-left: 10px;
+        padding-right: 27px;
+        align-items: center;
+        height: 95px;
+        border-bottom: 1px solid var(--secondary-color);
+
+        .left_block {
+            .group_img {
+                border-radius: 50%;
+                width: 73px;
+                height: 73px;
+                object-fit: cover;
+            }
+
+            .text {
+                .quantity {
+                    font: var(--font-l-b);
+                    color: var(--gray-color);
+                }
+            }
+        }
+
+        .right_block {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: end;
+            gap: 5px;
+            text-align: end;
+
+            .text_invite {
+                font: var(--font-l);
+                color: var(--gray-color);
+            }
+
+            .text_edit {
+                margin: 0;
+                font: var(--font-s);
+                color: var(--gray-color);
+            }
+        }
+    }
+}

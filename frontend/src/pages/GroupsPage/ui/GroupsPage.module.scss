@@ -1,0 +1,280 @@
+.GroupsPage {
+    min-height: calc(100vh - var(--navbar-height));
+    padding: 35px;
+
+    .main_block {
+        display: flex;
+        justify-content: center;
+        gap: 45px;
+    }
+
+    // блок участников и групп
+    .block_selections {
+        width: 612px;
+
+        .block_groups {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+
+            .section_choise {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 15px 25px 15px 20px;
+                background-color: var(--inverted-bg-color);
+                border-radius: 9px;
+                height: 55px;
+
+                .left_block_section_choise {
+                    display: flex;
+                    justify-content: start;
+                    align-items: center;
+                    gap: 15px;
+
+                    .arrows_icon {
+                        width: 19px;
+                        height: 24px;
+                        fill: var(--gray-color2);
+                        transition: all 0.3s ease;
+                    }
+
+                    .text_choise {
+                        font: var(--font-l-b);
+                        color: var(--gray-color2);
+                        transition: color 0.3s ease;
+                    }
+                }
+
+                .arrow_left2_icon {
+                    transform: rotate(-90deg);
+                    width: 17px;
+                    height: 17px;
+                    fill: var(--gray-color);
+                    transition: all 0.3s ease;
+                }
+
+                &.active {
+                    .left_block_section_choise {
+                        .arrows_icon {
+                            fill: var(--primary-color);
+                        }
+
+                        .text_choise {
+                            color: var(--primary-color);
+                        }
+                    }
+
+                    .arrow_left2_icon {
+                        transform: rotate(90deg);
+                        fill: var(--primary-color);
+                    }
+                }
+            }
+        }
+    }
+}
+
+.block_content {
+    flex-grow: 2;
+    padding: 15px 13px;
+    border-radius: 9px;
+    background-color: var(--inverted-bg-color2);
+
+    .input {
+        border-radius: 9px;
+    }
+
+    // блок тасок
+    .tasks {
+        margin: 45px 25px 30px;
+        display: flex;
+        flex-direction: column;
+        justify-content: start;
+        align-items: start;
+        gap: 40px;
+        overflow-y: auto;
+        max-height: 580px;
+
+        /* Кастомный скроллбар */
+        &::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        &::-webkit-scrollbar-track {
+            background:
+                linear-gradient(
+                    to bottom,
+                    transparent 0%,
+                    var(--inverted-bg-color2) 50%,
+                    transparent 100%
+                );
+            border-radius: 4px;
+            margin: 20px 0;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            background:
+                linear-gradient(
+                    to bottom,
+                    var(--secondary-color),
+                    var(--green-color)
+                );
+            border-radius: 4px;
+            border: 2px solid var(--inverted-bg-color);
+            transition: all 0.3s ease;
+
+            &:hover {
+                background:
+                    linear-gradient(
+                        to bottom,
+                        var(--green-color),
+                        var(--secondary-color)
+                    );
+                transform: scale(1.1);
+            }
+
+            &:active {
+                background:
+                    linear-gradient(
+                        to bottom,
+                        var(--green-color),
+                        var(--secondary-color)
+                    );
+            }
+        }
+
+        /* Для Firefox */
+        scrollbar-width: thin;
+        scrollbar-color: var(--secondary-color) transparent;
+
+        /* Для IE */
+        scrollbar-face-color: var(--secondary-color);
+        scrollbar-track-color: transparent;
+    }
+
+    /* Градиентные эффекты вверху и внизу скролла */
+    .tasks::before,
+    .tasks::after {
+        content: "";
+        position: fixed;
+        left: 0;
+        width: var(--sidebar-width);
+        height: 20px;
+        pointer-events: none;
+        z-index: 2;
+    }
+
+    .tasks::before {
+        top: 0;
+        background:
+            linear-gradient(
+                to bottom,
+                var(--inverted-bg-color) 0%,
+                transparent 100%
+            );
+    }
+
+    .tasks::after {
+        bottom: 0;
+        background:
+            linear-gradient(
+                to top,
+                var(--inverted-bg-color) 0%,
+                transparent 100%
+            );
+    }
+
+    .task {
+        .head_block_task {
+            border-top-left-radius: 9px;
+            border-top-right-radius: 9px;
+            padding-left: 25px;
+            padding-right: 15px;
+            height: 65px;
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px solid var(--secondary-color);
+            background-color: var(--inverted-bg-color);
+
+            .left_block_task {
+                display: flex;
+                justify-content: start;
+                align-items: center;
+                gap: 20px;
+
+                .member_img {
+                    width: 47px;
+                    height: 47px;
+                    object-fit: cover;
+                    border-radius: 50%;
+                }
+
+                .text_member {
+                    display: flex;
+                    justify-content: center;
+                    flex-direction: column;
+                    align-items: start;
+
+                    .block_title_text_member {
+                        display: flex;
+                        justify-content: start;
+                        align-items: center;
+                        gap: 7px;
+
+                        .title_member {
+                            font: var(--font-l-b);
+                            color: var(--primary-color);
+                        }
+
+                        .member_icon {
+                            width: 10px;
+                            height: 10px;
+                        }
+                    }
+
+                    .role_member {
+                        font: var(--font-s);
+                        color: var(--gray-color);
+                    }
+                }
+            }
+
+            .right_block_task {
+                height: 100%;
+                display: flex;
+                align-items: end;
+
+                .text_publish {
+                    font: var(--font-s);
+                    color: var(--gray-color);
+                    margin-bottom: 4px;
+                }
+            }
+        }
+
+        .message {
+            height: 90px;
+            background-color: var(--inverted-bg-color);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: start;
+            padding-left: 25px;
+            padding-right: 25px;
+            margin-top: 2px;
+            border-bottom-left-radius: 9px;
+            border-bottom-right-radius: 9px;
+
+            .title_message {
+                font: var(--font-l-b);
+                color: var(--gray-color);
+            }
+
+            .text_message {
+                font: var(--font-s);
+                color: var(--green-color);
+            }
+        }
+    }
+}

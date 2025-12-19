@@ -1,0 +1,129 @@
+.ProfilePage {
+    padding: 43px;
+
+    .main_block {
+        background-color: var(--secondary-color);
+    }
+
+    .profile {
+        width: 100%;
+        background-color: var(--inverted-bg-color);
+        height: 360px;
+        border-bottom: 3px solid var(--secondary-color);
+        display: flex;
+        justify-content: start;
+        align-items: center;
+        gap: 59px;
+        padding-left: 51px;
+        position: relative;
+
+        .icon_avatar {
+            width: 256px;
+            height: 256px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .head_title {
+            font: var(--font-xl-b);
+            color: var(--primary-color);
+            margin: 0;
+        }
+
+        .head_profil {
+            display: flex;
+            align-items: center;
+            justify-content: start;
+            gap: 12px;
+            margin-top: 14px;
+
+            .icon_exclamation {
+                width: 23px;
+                height: 23px;
+                fill: var(--gray-color);
+            }
+
+            .username {
+                font: var(--font-xl-b);
+                color: var(--gray-color);
+                margin: 0;
+            }
+        }
+
+        .block_desc_profile {
+            display: flex;
+            justify-content: start;
+            align-items: start;
+            margin-top: 49px;
+            gap: 212px;
+
+            .desc_profil_title {
+                font: var(--font-xl-b);
+                color: var(--primary-color);
+                margin: 0;
+            }
+
+            .desc_profil {
+                font: var(--font-l-b);
+                color: var(--gray-color);
+                margin: 0;
+            }
+        }
+    }
+}
+
+.block_search {
+    display: flex;
+    justify-content: space-between;
+    background-color: var(--inverted-bg-color2);
+    padding: 25px 29px 25px 62px;
+
+    .title_labs {
+        display: flex;
+        justify-content: start;
+        align-items: center;
+        gap: 14px;
+        font: var(--font-xl-b);
+        
+        .dot{
+            color: var(--gray-color);
+        }
+    
+        .lab_text{
+            color: var(--green-color);
+        }
+    }
+
+    .input_search {
+        width: 479px;
+        border-radius: 7px;
+    }
+}
+
+.block_labs {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    background-color: var(--inverted-bg-color);
+}
+
+.btn_exit {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    gap: 10px;
+    background: none;
+    align-items: center;
+
+    .arrow_icon {
+        width: 16px;
+        height: 16px;
+        fill: var(--red-color);
+        margin-top: 3px;
+    }
+
+    .text_arrow_btn {
+        font: var(--font-l);
+        color: var(--red-color);
+        margin: 0;
+    }
+}

@@ -1,0 +1,72 @@
+.block_member {
+    padding-left: 20px;
+    padding-right: 30px;
+    height: 87px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .left_block {
+        display: flex;
+        justify-content: start;
+        align-items: center;
+        gap: 14px;
+
+        .member_img {
+            width: 63px;
+            height: 63px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .text {
+            display: flex;
+            align-items: start;
+            justify-content: center;
+            flex-direction: column;
+            gap: 5px;
+
+            .head_block {
+                display: flex;
+                justify-content: start;
+                align-items: center;
+                gap: 10px;
+
+                .title {
+                    color: var(--primary-color);
+                    font: var(--font-l-b);
+                }
+
+                .member_icon {
+                    width: 15px;
+                    height: 16px;
+                    fill: var(--primary-color);
+                }
+            }
+
+            .role {
+                font: var(--font-s);
+                color: var(--gray-color);
+            }
+        }
+    }
+
+    .right_block {
+        display: flex;
+        justify-content: end;
+        align-items: center;
+        gap: 26px;
+
+        .text_invite {
+            margin-top: 10px;
+            color: var(--gray-color);
+            font: var(--font-s);
+        }
+
+        .basket_icon {
+            width: 20px;
+            height: 22px;
+            fill: var(--gray-color);
+        }
+    }
+}

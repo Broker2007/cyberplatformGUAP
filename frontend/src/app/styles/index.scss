@@ -1,0 +1,30 @@
+@use "reset";
+@use "classes";
+@use "variables/global";
+@use "themes/blueTeam";
+@use "themes/redTeam";
+
+body.sidebar-open {
+    overflow: hidden;
+    padding-right: 15px;
+    background-color: var(--bg-color);
+}
+
+body {
+    font-weight: 100;
+    background-color: var(--bg-color);
+}
+
+.app,
+.app_modal {
+    color: var(--primary-color);
+    font: var(--font-m);
+}
+
+.app {
+    background: var(--bg-color);
+}
+
+.page-wrapper {
+    min-height: 100vh;
+}

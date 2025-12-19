@@ -1,0 +1,235 @@
+.MainPage {
+    width: 100%;
+    background-image: url("shared/assets/image/bg_main.jpg");
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+
+    .content {
+        margin-top: 40px;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 100%;
+        min-height: calc(100vh - 40px);
+
+        .head_block {
+            .block_logo {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                .main_logo {
+                    width: 80px;
+                    height: 80px;
+                }
+            }
+
+            .main_text {
+                font: var(--font-xl);
+                text-align: center;
+                margin-top: 10px;
+            }
+
+            .second_text {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin-top: 10px;
+
+                p {
+                    max-width: 253px;
+                    font: var(--font-m);
+                    color: var(--gray-color);
+                }
+            }
+
+            .cards_block {
+                display: flex;
+                gap: 70px;
+                justify-content: center;
+                align-items: center;
+                margin-top: 20px;
+
+                .card_item {
+                    &.blue_team {
+                        background-image: url("shared/assets/image/bg_card_blue.jpg");
+                        outline: 1px solid #0c87e1;
+                        transition: 0.3s ease;
+
+                        &:hover{
+                            outline: 3px solid #0c87e1;
+                            box-shadow: 
+                                0 0 40px rgba(12, 135, 225, 0.8),
+                                0 0 80px rgba(12, 135, 225, 0.4);
+                        }
+
+                        .teams_icon {
+                            fill: #0c87e1;
+                        }
+
+                        .icon_li {
+                            fill: #9ad8ff;
+                        }
+
+                        .text_li {
+                            color: #9ad8ff;
+                        }
+                    }
+
+                    &.red_team {
+                        background-image: url("shared/assets/image/bg_card_red.jpg");
+                        outline: 1px solid #e04f53;
+                        transition: 0.3s ease;
+
+                        &:hover{
+                            outline: 3px solid #e04f53;
+                            box-shadow: 
+                                0 0 40px rgba(224, 79, 83, 0.8),
+                                0 0 80px rgba(224, 79, 83, 0.4);
+                        }
+
+                        .teams_icon {
+                            fill: #e04f53;
+                        }
+
+                        .icon_li {
+                            fill: #ff888a;
+                            stroke: #ff888a;
+                        }
+
+                        .text_li {
+                            color: #ff888a;
+                        }
+                    }
+
+                    width: 270px;
+                    height: 270px;
+                    padding-top: 21px;
+                    border-radius: 29px;
+                    padding-bottom: 30px;
+                    padding-left: 21px;
+                    background-size: cover;
+                    background-position: center;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-between;
+                    box-sizing: border-box;
+
+                    .title_block_card {
+                        display: flex;
+                        justify-content: start;
+                        align-items: center;
+                        gap: 17px;
+                        font: var(--font-l);
+
+                        .teams_icon {
+                            width: 35px;
+                            height: 24px;
+                        }
+                    }
+
+                    .second_block {
+                        padding-left: 7px;
+
+                        .li_block {
+                            display: flex;
+                            justify-content: start;
+                            align-items: center;
+                            gap: 6px;
+
+                            .text_li {
+                                font: var(--font-s);
+                            }
+
+                            .icon_li {
+                                width: 20px;
+                                height: 20px;
+                            }
+                        }
+
+                        &:not(:first-child) {
+                            .li_block {
+                                margin-top: 16px;
+                            }
+                        }
+                    }
+                }
+            }
+
+            .btn_block {
+                margin-top: 30px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                .width {
+                    width: 374px;
+                }
+
+                .btn_log_in,
+                .btn_reg {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    text-decoration: none;
+                    color: inherit;
+                    cursor: pointer;
+                    -webkit-tap-highlight-color: transparent;
+                    outline: none;
+                    border: none;
+                    background-color: transparent;
+                    width: 100%;
+                    height: 49px;
+                    font: var(--font-s);
+                    border-radius: 12px;
+                    text-align: center;
+                }
+
+                .btn_log_in {
+                    background-color: var(--green-color);
+                }
+
+                .btn_reg {
+                    background: transparent;
+                    border: 1px solid var(--gray-color);
+                    margin-top: 10px;
+                }
+            }
+        }
+    }
+
+    .polit_block {
+        padding-top: 20px;
+        padding-bottom: 20px;
+
+        .line {
+            height: 1px;
+            display: block;
+            background-color: var(--gray-color);
+            width: 100%;
+            margin-bottom: 10px;
+        }
+
+        .text_polit {
+            font: var(--font-s);
+            width: 368px;
+        }
+    }
+}
+
+
+
+// /* card3 */
+
+// position: absolute;
+// width: 269px;
+// height: 269px;
+// left: 3127px;
+// top: 81px;
+
+// filter: drop-shadow(0px 0px 20.2px rgba(151, 37, 37, 0.49));
+// border-radius: 26px;
