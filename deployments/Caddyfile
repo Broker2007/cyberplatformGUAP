@@ -1,0 +1,50 @@
+{
+    auto_https off
+}
+
+http://cyberplatform.com {
+    encode gzip
+    reverse_proxy cyberplatform-frontend:80
+
+    log {
+        output stdout
+        format console
+    }
+}
+
+http://api.cyberplatform.com {
+    encode gzip
+    reverse_proxy cyberplatform-api:8080
+
+    log {
+        output stdout
+        format console
+    }
+}
+
+http://files.cyberplatform.com {
+    encode gzip
+    reverse_proxy cyberplatform-minio:9000
+
+    log {
+        output stdout
+        format console
+    }
+}
+
+http://ctf.cyberplatform.com {
+    encode gzip
+
+    handle /api/* {
+        reverse_proxy ctf-backend:8040
+    }
+
+    handle {
+        reverse_proxy ctf-frontend:80
+    }
+
+    log {
+        output stdout
+        format console
+    }
+}

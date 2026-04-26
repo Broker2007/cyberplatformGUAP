@@ -1,0 +1,147 @@
+.pageWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 18px 0;
+    height: calc(100vh - var(--navbar-height));
+}
+
+.container {
+    width: 875px;
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+    height: calc(100vh - 20px - var(--navbar-height));
+    background: var(--bg-color);
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgb(0 0 0 / 10%);
+}
+
+.searchSection {
+    flex-shrink: 0;
+    padding: 10px 0;
+    padding-left: 30px;
+    padding-right: 10px;
+}
+
+.contentSection {
+    flex: 1;
+    overflow-y: auto;
+    padding: 0 30px;
+    scrollbar-gutter: stable;
+    padding-right: 17px;
+    margin-right: -17px;
+
+    &::-webkit-scrollbar {
+        width: 8px;
+    }
+
+    &::-webkit-scrollbar-track {
+        background:
+            linear-gradient(
+                to bottom,
+                transparent 0%,
+                var(--inverted-bg-color) 50%,
+                transparent 100%
+            );
+        border-radius: 4px;
+        margin: 20px 0;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background:
+            linear-gradient(
+                to bottom,
+                var(--secondary-color),
+                var(--green-color)
+            );
+        border-radius: 4px;
+        border: 2px solid var(--inverted-bg-color2);
+        transition: all 0.3s ease;
+
+        &:hover {
+            background:
+                linear-gradient(
+                    to bottom,
+                    var(--green-color),
+                    var(--secondary-color)
+                );
+            transform: scale(1.1);
+        }
+
+        &:active {
+            background:
+                linear-gradient(
+                    to bottom,
+                    var(--green-color),
+                    var(--secondary-color)
+                );
+        }
+    }
+
+    /* Firefox: тонкий кастомный скроллбар */
+    scrollbar-width: thin;
+    scrollbar-color: var(--secondary-color) transparent;
+
+    /* Градиентные эффекты вверху и внизу контента */
+    position: relative;
+}
+
+.paginationSection {
+    flex-shrink: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 8px 30px;
+}
+
+.emptyState {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    text-align: center;
+    color: var(--secondary-color2);
+
+    h3 {
+        margin-bottom: 10px;
+        font-size: 20px;
+    }
+
+    p {
+        font-size: 16px;
+        opacity: 0.8;
+    }
+}
+
+.block_labs {
+    display: flex;
+    flex-direction: column;
+}
+
+.error {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+
+    .retryButton {
+        margin-top: 20px;
+        padding: 12px 24px;
+        background: var(--green-color);
+        color: white;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        font: var(--font-m);
+        transition: all 0.3s ease;
+
+        &:hover {
+            background: var(--secondary-color);
+            transform: translateY(-2px);
+        }
+    }
+}

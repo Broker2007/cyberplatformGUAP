@@ -1,0 +1,218 @@
+.main_block {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    z-index: 100;
+    opacity: 1;
+    background-color: rgb(0 0 0 / 20%);
+    backdrop-filter: blur(5px);
+    transition: opacity 0.3s ease;
+
+    a {
+        text-decoration: none;
+        color: inherit;
+        outline: none;
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+        -webkit-tap-highlight-color: transparent;
+        display: flex;
+        align-items: center;
+    }
+}
+
+.main_block.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.logo {
+    width: 54px;
+    height: 54px;
+}
+
+/* стилизация скроллбара */
+.sidebar {
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    width: var(--sidebar-width);
+    height: 100vh;
+    background-color: var(--inverted-bg-color2);
+    transition: transform 0.5s ease;
+    overflow-y: auto;
+
+    /* Кастомный скроллбар */
+    &::-webkit-scrollbar {
+        width: 8px;
+    }
+
+    &::-webkit-scrollbar-track {
+        background:
+            linear-gradient(
+                to bottom,
+                transparent 0%,
+                var(--inverted-bg-color) 50%,
+                transparent 100%
+            );
+        border-radius: 4px;
+        margin: 20px 0;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background:
+            linear-gradient(
+                to bottom,
+                var(--secondary-color),
+                var(--green-color)
+            );
+        border-radius: 4px;
+        border: 2px solid var(--inverted-bg-color2);
+        transition: all 0.3s ease;
+
+        &:hover {
+            background:
+                linear-gradient(
+                    to bottom,
+                    var(--green-color),
+                    var(--secondary-color)
+                );
+            transform: scale(1.1);
+        }
+
+        &:active {
+            background:
+                linear-gradient(
+                    to bottom,
+                    var(--green-color),
+                    var(--secondary-color)
+                );
+        }
+    }
+
+    /* Для Firefox */
+    scrollbar-width: thin;
+    scrollbar-color: var(--secondary-color) transparent;
+
+    /* Для IE */
+    scrollbar-face-color: var(--secondary-color);
+    scrollbar-track-color: transparent;
+}
+
+/* Градиентные эффекты вверху и внизу скролла */
+.sidebar::before,
+.sidebar::after {
+    content: "";
+    position: fixed;
+    left: 0;
+    width: var(--sidebar-width);
+    height: 20px;
+    pointer-events: none;
+    z-index: 2;
+}
+
+.sidebar::before {
+    top: 0;
+    background:
+        linear-gradient(
+            to bottom,
+            var(--inverted-bg-color2) 0%,
+            transparent 100%
+        );
+}
+
+.sidebar::after {
+    bottom: 0;
+    background:
+        linear-gradient(
+            to top,
+            var(--inverted-bg-color2) 0%,
+            transparent 100%
+        );
+}
+
+.sidebar.collapsed {
+    transform: translateX(-100%);
+}
+
+.btn_collapsed {
+    cursor: pointer;
+    font-size: 30px;
+    text-align: center;
+    color: var(--secondary-color);
+    transition: color 0.2s ease;
+    position: relative;
+    z-index: 10;
+
+    &:hover {
+        color: var(--green-color);
+    }
+}
+
+.close {
+    outline: none;
+}
+
+.header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    position: sticky;
+    align-items: center;
+    padding: 15px 15px 0;
+}
+
+.nav_list {
+    font: var(--font-m);
+    width: 100%;
+    padding-left: 80px;
+    padding-bottom: 60px;
+}
+
+.block_partners {
+    border-top: 2px solid var(--secondary-color);
+
+    .partners {
+        margin-left: 70px;
+        margin-top: 30px;
+        margin-bottom: 30px;
+
+        .title {
+            font-size: 14px;
+            margin-bottom: 23px;
+            color: var(--secondary-color2);
+        }
+
+        .filling {
+            font: var(--font-m);
+            margin-left: 20px;
+        }
+
+        .filling_media {
+            font: var(--font-m);
+            margin-left: 20px;
+            margin-top: 18px;
+            display: block;
+
+            &:hover {
+                color: var(--green-color);
+            }
+        }
+    }
+}
+
+.goback {
+    color: var(--secondary-color2);
+    transition: color 0.2s ease;
+
+    &:hover {
+        color: var(--green-color);
+    }
+}
+
+.sidebar_content {
+    color: var(--primary-color);
+}

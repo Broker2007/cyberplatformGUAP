@@ -1,0 +1,114 @@
+version: '3.8'
+
+services:
+  api:
+    container_name: cyberplatform-api
+    restart: on-failure
+
+    build:
+      context: ../..                           
+      dockerfile: deployments/backend/Dockerfile
+
+    command: ./cyberplatform
+    # либо через env_file, либо через ${VAR}. Я показываю через env_file:
+    env_file:
+      - .env
+   
+    networks:
+      - caddy-network
+
+    # для отладки можно публиковать порт наружу
+    ports:
+      - "${HTTP_PORT}:${HTTP_PORT}"
+
+    depends_on:
+      postgres:
+        condition: service_healthy
+      minio:
+        condition: service_started
+
+  postgres:
+    container_name: cyberplatform-postgres
+    image: postgres:17.0-alpine3.20
+    restart: on-failure
+
+    environment:
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_DB=${POSTGRES_DB}
+      # порт можно оставить стандартный 5432, и в DB_DSN использовать его напрямую
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U admin -d db"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+
+    networks:
+      - caddy-network
+
+    # в проде порт БД наружу лучше НЕ торчать, но для dev можно:
+    ports:
+      - "${POSTGRES_PORT}:${POSTGRES_PORT}"
+    command: -p ${POSTGRES_PORT}
+
+  minio:
+    image: quay.io/minio/minio
+    container_name: cyberplatform-minio
+    restart: unless-stopped
+    ports:
+      - "9000:9000"   # S3 API
+      - "9001:9001"   # Web Console
+    environment:
+      MINIO_ROOT_USER: "${MINIO_ACCESS_KEY}"
+      MINIO_ROOT_PASSWORD: "${MINIO_SECRET_KEY}" 
+    volumes:
+      - minio_data:/data
+    command: ["server", "/data", "--console-address", ":9001"]
+    networks: 
+      - caddy-network
+    
+  frontend:
+    container_name: cyberplatform-frontend
+    restart: on-failure
+    build:
+      context: ../..                     # корень репозитория
+      dockerfile: deployments/frontend/Dockerfile
+    # nginx внутри слушает 80, наружу пробрасываем FRONTEND_PORT
+    ports:
+      - "${FRONTEND_PORT:-8080}:80"
+    depends_on:
+      - api
+    networks:
+      - caddy-network
+
+  caddy:
+    image: caddy:2-alpine
+    container_name: cyberplatform-caddy
+
+    ports:
+      - "80:80"
+      - "443:443"
+
+    volumes:
+      - caddy_data:/data
+      - caddy_config:/config
+      - ./Caddyfile:/etc/caddy/Caddyfile
+
+    restart: unless-stopped
+    networks:
+      caddy-network:
+        aliases:
+          - files.cyberplatform.com
+          - api.cyberplatform.com
+          - cyberplatform.com
+
+volumes:
+  caddy_data:
+  caddy_config:
+  minio_data:
+
+networks:
+  caddy-network:
+    driver: bridge
+
+

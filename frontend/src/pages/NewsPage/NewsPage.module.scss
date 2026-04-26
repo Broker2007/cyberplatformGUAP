@@ -1,0 +1,38 @@
+.NewsPage {
+    display: flex;
+    justify-content: center;
+    align-items: start;
+}
+
+.container {
+    width: 870px;
+    margin-top: 56px;
+
+    .title_news {
+        background-color: var(--inverted-bg-color);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 80px;
+        border-radius: 10px;
+
+        .title_text {
+            font: var(--font-l-b);
+        }
+    }
+}
+
+.news_list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.pagination {
+    flex-shrink: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 8px 30px;
+}

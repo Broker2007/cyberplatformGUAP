@@ -1,0 +1,151 @@
+.ModalRegistration {
+    width: 100%;
+}
+
+.modal_background {
+    font: var(--font-xl);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    background-color: var(--bg-color);
+
+    a {
+        text-decoration: none;
+        color: inherit;
+        outline: none;
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+        -webkit-tap-highlight-color: transparent;
+        align-items: center;
+    }
+}
+
+// шарик левый
+.glow_left {
+    position: absolute;
+    left: -80px;
+    top: 20px;
+    width: 150px;
+    height: 150px;
+    z-index: -1;
+    background: linear-gradient(90deg, #e6164b, #2056ae, #41bdef);
+    filter: blur(80px);
+    opacity: 0.9;
+}
+
+// шарик правый
+.glow_right {
+    position: absolute;
+    right: -80px;
+    bottom: 0;
+    width: 150px;
+    height: 150px;
+    z-index: -1;
+    background: linear-gradient(90deg, #e6164b, #2056ae, #41bdef);
+    filter: blur(80px);
+    opacity: 0.8;
+}
+
+.modal_container {
+    background: rgb(21 21 31 / 30%);
+    border-radius: 25px;
+    padding: 25px 80px;
+    width: 650px;
+    text-align: center;
+    position: relative;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgb(255 255 255 / 10%);
+    margin-top: 100px;
+    margin-bottom: 100px;
+}
+
+.block_logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    transition: transform 0.5s ease;
+}
+
+.text_logo {
+    font: var(--font-xl);
+    font-family: sans-serif;
+    background-image: linear-gradient(#e6154a 0%, #a32b9b 50%, #2255ac 80%, #2255ac 100%);
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.title {
+    font: var(--font-xl);
+    margin-top: 10px;
+    margin-bottom: 40px;
+    color: #fff;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.inputs_container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.register_button {
+    margin-top: 15px;
+    margin-bottom: 20px;
+    padding: 15px;
+    width: 250px;
+    justify-self: center;
+}
+
+.login_link_container {
+    display: flex;
+    justify-content: center;
+}
+
+.login_text {
+    font: var(--font-m);
+    color: rgb(255 255 255 / 60%);
+    display: flex;
+    gap: 6px;
+    white-space: nowrap;
+    font-size: 22px;
+}
+
+.login_link {
+    color: #fb0086 !important;
+    cursor: pointer;
+
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+
+.login_button{
+    box-sizing: border-box;
+    border: solid 2px var(--green-color) !important;
+    background: linear-gradient(
+        115deg,
+        var(--bg-color) 0%,
+        var(--bg-color) 48.7%,
+        white 49%,
+        white 51%,
+        var(--green-color) 51.3%,
+        var(--green-color) 100%
+    ) !important;
+    background-size: 220% 100% !important;
+    background-position: 100% 0 !important;
+    transition: background-position 0.4s ease !important;
+    &:hover{
+        background-position: 0 0 !important;
+    }
+}

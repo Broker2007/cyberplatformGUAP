@@ -1,0 +1,99 @@
+version: '3.8'
+
+services:
+  api:
+    container_name: cyberplatform-api
+    restart: on-failure
+    build:
+      context: ../..
+      dockerfile: deployments/backend/Dockerfile
+    command: ./cyberplatform
+    env_file:
+      - .env
+    networks:
+      - reverse-proxy-net
+    expose:
+      - "8080"
+    ports:
+      - "8080:8080"
+    depends_on:
+      postgres:
+        condition: service_healthy
+      minio:
+        condition: service_started
+
+  postgres:
+    container_name: cyberplatform-postgres
+    image: postgres:17.0-alpine3.20
+    restart: on-failure
+    environment:
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_DB=${POSTGRES_DB}
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U admin -d db"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+    networks:
+      - reverse-proxy-net
+    ports:
+      - "5432:5432"
+    command: -p 5432
+
+  minio:
+    image: quay.io/minio/minio
+    container_name: cyberplatform-minio
+    restart: unless-stopped
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+    environment:
+      MINIO_ROOT_USER: "${MINIO_ACCESS_KEY}"
+      MINIO_ROOT_PASSWORD: "${MINIO_SECRET_KEY}"
+    volumes:
+      - minio_data:/data
+    command: ["server", "/data", "--console-address", ":9001"]
+    networks:
+      - reverse-proxy-net
+
+  frontend:
+    container_name: cyberplatform-frontend
+    restart: on-failure
+    build:
+      context: ../..
+      dockerfile: deployments/frontend/Dockerfile
+    ports:
+      - "3000:80"
+    depends_on:
+      - api
+    networks:
+      - reverse-proxy-net
+
+  caddy:
+    image: caddy:2-alpine
+    container_name: cyberplatform-caddy
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - caddy_data:/data
+      - caddy_config:/config
+      - ./Caddyfile:/etc/caddy/Caddyfile
+    restart: unless-stopped
+    networks:
+      reverse-proxy-net:
+        aliases:
+          - cyberplatform.com
+          - api.cyberplatform.com
+          - files.cyberplatform.com
+          - ctf.cyberplatform.com
+
+volumes:
+  caddy_data:
+  caddy_config:
+  minio_data:
+
+networks:
+  reverse-proxy-net:
+    external: true

@@ -1,0 +1,158 @@
+.NewsItem {
+    width: 100%;
+    padding: 20px;
+    background-color: var(--inverted-bg-color2);
+    border-radius: 10px;
+}
+
+/* ЗАГОЛОВОК */
+.title {
+    font: var(--font-l-b);
+    word-break: break-word;
+    overflow-wrap: break-word;
+    margin-bottom: 20px;
+}
+
+/* БЛОК КАРТИНОК */
+.imagesBlock {
+    margin-top: 20px;
+}
+
+/* === 1 КАРТИНКА === */
+.single {
+    display: flex;
+    justify-content: center;
+
+    .imageItem {
+        width: 520px;
+        height: 292px;
+        overflow: hidden;
+        border-radius: 10px;
+    }
+}
+
+/* === 2 КАРТИНКИ === */
+.grid2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    height: 300px;
+    max-width: 700px;
+    margin: 0 auto;
+
+    .imageItem {
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        border-radius: 10px;
+    }
+}
+
+/* === 3 КАРТИНКИ === */
+.grid3 {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 8px;
+    height: 350px;
+    max-width: 700px;
+    margin: 0 auto;
+
+    .imageItem {
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        border-radius: 10px;
+    }
+
+    .imageItem:nth-child(1) {
+        grid-column: 1 / 2;
+        grid-row: 1 / 3;
+    }
+
+    .imageItem:nth-child(2) {
+        grid-column: 2 / 3;
+        grid-row: 1 / 2;
+    }
+
+    .imageItem:nth-child(3) {
+        grid-column: 2 / 3;
+        grid-row: 2 / 3;
+    }
+}
+
+/* === 4 КАРТИНКИ === */
+.grid4 {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 8px;
+    height: 350px;
+    max-width: 700px;
+    margin: 0 auto;
+
+    .imageItem {
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        border-radius: 10px;
+    }
+
+    .imageItem:nth-child(1) {
+        grid-column: 1 / 2;
+        grid-row: 1 / 3;
+    }
+
+    .imageItem:nth-child(2) {
+        grid-column: 2 / 3;
+        grid-row: 1 / 2;
+    }
+
+    .imageItem:nth-child(3) {
+        grid-column: 3 / 4;
+        grid-row: 1 / 2;
+    }
+
+    .imageItem:nth-child(4) {
+        grid-column: 2 / 4;
+        grid-row: 2 / 3;
+    }
+}
+
+/* ОБЩИЕ СТИЛИ */
+.image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.2s ease;
+
+    &:hover {
+        transform: scale(1.05);
+        cursor: pointer;
+    }
+}
+
+.grid2 .image:hover,
+.grid3 .image:hover,
+.grid4 .image:hover {
+    transform: scale(1.05);
+    cursor: pointer;
+}
+
+/* ТЕКСТ */
+.description {
+    margin-top: 20px;
+    color: var(--gray-color);
+    font: var(--font-m);
+    word-break: break-word;
+    overflow-wrap: break-word;
+}
+
+/* ФУТЕР */
+.footer {
+    color: var(--gray-color);
+    margin-top: 20px;
+    display: flex;
+    gap: 10px;
+    font: var(--font-s-b);
+}

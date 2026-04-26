@@ -1,0 +1,644 @@
+
+openapi: 3.1.0
+info:
+  title: Cyberplatform Unified API
+  version: 1.0.0
+  description: >
+    Draft contract for frontend-backend. Modular monolith (Go + Gin), Postgres.
+    Namespaced under /api/v1. JWT bearer auth. JSON only.
+    Conventions: snake_case in DB, camelCase in JSON. RFC3339 for timestamps.
+
+servers:
+  - url: https://example.local/api/v1
+
+tags:
+  - name: Auth
+  - name: Users
+  - name: Groups
+  - name: LabTemplates
+  - name: Labs
+  - name: LabSessions
+  - name: Submissions
+  - name: Files
+  - name: EVE
+  - name: Admin
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+  parameters:
+    PageParam:
+      name: page
+      in: query
+      required: false
+      schema: { type: integer, minimum: 1, default: 1 }
+      description: 1-based page index.
+    PerPageParam:
+      name: perPage
+      in: query
+      required: false
+      schema: { type: integer, minimum: 1, maximum: 200, default: 20 }
+      description: Items per page.
+    SortParam:
+      name: sort
+      in: query
+      required: false
+      schema: { type: string }
+      description: Comma-separated fields with optional '-' prefix, e.g. "-createdAt,name".
+  schemas:
+    Error:
+      type: object
+      required: [error, message]
+      properties:
+        error: { type: string, example: "validation_error" }
+        message: { type: string, example: "email is invalid" }
+        details: { type: object, additionalProperties: true }
+        requestId: { type: string }
+    PageMeta:
+      type: object
+      properties:
+        page: { type: integer }
+        perPage: { type: integer }
+        total: { type: integer }
+    UserRole:
+      type: string
+      enum: [student, teacher, admin]
+    User:
+      type: object
+      required: [id, email, role]
+      properties:
+        id: { type: string, format: uuid }
+        email: { type: string, format: email }
+        fullName: { type: string }
+        role: { $ref: "#/components/schemas/UserRole" }
+        Avatar: {type: string}
+        groupId: { type: string, format: uuid, nullable: true }
+        createdAt: { type: string, format: date-time }
+        updatedAt: { type: string, format: date-time, nullable: true }
+    Group:
+      type: object
+      required: [id, name]
+      properties:
+        id: { type: string, format: uuid }
+        name: { type: string }
+        labQuota: { type: integer, description: "Max active labs allowed for this group." }
+        createdAt: { type: string, format: date-time }
+    LabTemplate:
+      type: object
+      required: [id, name, description]
+      properties:
+        id: { type: string, format: uuid }
+        name: { type: string }
+        description: { type: string }
+        difficulty: { type: string, enum: [easy, medium, hard] }
+        tags:
+          type: array
+          items: { type: string }
+        eveNgTopologyId: { type: string, description: "EVE-NG template/topology reference" }
+        createdAt: { type: string, format: date-time }
+    Lab:
+      type: object
+      required: [id, templateId, groupId, status]
+      properties:
+        id: { type: string, format: uuid }
+        templateId: { type: string, format: uuid }
+        groupId: { type: string, format: uuid }
+        status: { type: string, enum: [draft, scheduled, active, archived] }
+        startsAt: { type: string, format: date-time, nullable: true }
+        endsAt: { type: string, format: date-time, nullable: true }
+        createdAt: { type: string, format: date-time }
+    LabSession:
+      type: object
+      required: [id, labId, userId, status]
+      properties:
+        id: { type: string, format: uuid }
+        labId: { type: string, format: uuid }
+        userId: { type: string, format: uuid }
+        status: { type: string, enum: [provisioning, running, stopped, failed, graded] }
+        eveNgNodeId: { type: string, nullable: true }
+        startedAt: { type: string, format: date-time, nullable: true }
+        stoppedAt: { type: string, format: date-time, nullable: true }
+        createdAt: { type: string, format: date-time }
+    Submission:
+      type: object
+      required: [id, labSessionId, status]
+      properties:
+        id: { type: string, format: uuid }
+        labSessionId: { type: string, format: uuid }
+        status: { type: string, enum: [draft, submitted, graded] }
+        score: { type: number, minimum: 0, maximum: 100, nullable: true }
+        feedback: { type: string, nullable: true }
+        createdAt: { type: string, format: date-time }
+        updatedAt: { type: string, format: date-time, nullable: true }
+    FileRef:
+      type: object
+      properties:
+        id: { type: string, format: uuid }
+        name: { type: string }
+        size: { type: integer }
+        contentType: { type: string }
+        url: { type: string, format: uri }
+        createdAt: { type: string, format: date-time }
+
+security:
+  - bearerAuth: []
+
+paths:
+  /auth/register:
+    post:
+      tags: [Auth]
+      summary: Register new user
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [email, password, fullName]
+              properties:
+                email: { type: string, format: email }
+                password: { type: string, minLength: 8 }
+                fullName: { type: string }
+      responses:
+        "201":
+          description: Created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  user: { $ref: "#/components/schemas/User" }
+                  token: { type: string }
+        "409": { description: Email already exists, content: { application/json: { schema: { $ref: "#/components/schemas/Error" } } } }
+
+  /auth/login:
+    post:
+      tags: [Auth]
+      summary: Obtain JWT
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [email, password]
+              properties:
+                email: { type: string, format: email }
+                password: { type: string }
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  user: { $ref: "#/components/schemas/User" }
+                  token: { type: string }
+        "401": { description: Invalid credentials, content: { application/json: { schema: { $ref: "#/components/schemas/Error" } } } }
+
+  /auth/refresh:
+    post:
+      tags: [Auth]
+      summary: Refresh JWT
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  token: { type: string }
+
+  /users/me:
+    get:
+      tags: [Users]
+      summary: Get current user
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/User" }
+
+  /users:
+    get:
+      tags: [Users]
+      summary: List users (admin/teacher)
+      parameters: [ { $ref: "#/components/parameters/PageParam" }, { $ref: "#/components/parameters/PerPageParam" }, { $ref: "#/components/parameters/SortParam" } ]
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  items:
+                    type: array
+                    items: { $ref: "#/components/schemas/User" }
+                  meta: { $ref: "#/components/schemas/PageMeta" }
+    post:
+      tags: [Users]
+      summary: Create user (admin)
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              allOf:
+                - $ref: "#/components/schemas/User"
+              properties:
+                password: { type: string, minLength: 8 }
+      responses:
+        "201":
+          description: Created
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/User" }
+
+  /users/{id}:
+    get:
+      tags: [Users]
+      summary: Get user by id
+      parameters: [ { name: id, in: path, required: true, schema: { type: string, format: uuid } } ]
+      responses:
+        "200": { description: OK, content: { application/json: { schema: { $ref: "#/components/schemas/User" } } } }
+        "404": { description: Not found }
+    patch:
+      tags: [Users]
+      summary: Update user
+      parameters: [ { name: id, in: path, required: true, schema: { type: string, format: uuid } } ]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                fullName: { type: string }
+                role: { $ref: "#/components/schemas/UserRole" }
+                groupId: { type: string, format: uuid, nullable: true }
+      responses:
+        "200": { description: OK, content: { application/json: { schema: { $ref: "#/components/schemas/User" } } } }
+
+  /groups:
+    get:
+      tags: [Groups]
+      summary: List groups
+      parameters: [ { $ref: "#/components/parameters/PageParam" }, { $ref: "#/components/parameters/PerPageParam" } ]
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  items: { type: array, items: { $ref: "#/components/schemas/Group" } }
+                  meta: { $ref: "#/components/schemas/PageMeta" }
+    post:
+      tags: [Groups]
+      summary: Create group
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [name]
+              properties:
+                name: { type: string }
+                labQuota: { type: integer, default: 10 }
+      responses:
+        "201": { description: Created, content: { application/json: { schema: { $ref: "#/components/schemas/Group" } } } }
+
+  /groups/{id}:
+    patch:
+      tags: [Groups]
+      summary: Update group
+      parameters: [ { name: id, in: path, required: true, schema: { type: string, format: uuid } } ]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name: { type: string }
+                labQuota: { type: integer }
+      responses:
+        "200": { description: OK, content: { application/json: { schema: { $ref: "#/components/schemas/Group" } } } }
+
+  /lab-templates:
+    get:
+      tags: [LabTemplates]
+      summary: List lab templates (catalog)
+      parameters:
+        - { $ref: "#/components/parameters/PageParam" }
+        - { $ref: "#/components/parameters/PerPageParam" }
+        - name: q
+          in: query
+          schema: { type: string }
+          description: Search by name/description/tag.
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  items: { type: array, items: { $ref: "#/components/schemas/LabTemplate" } }
+                  meta: { $ref: "#/components/schemas/PageMeta" }
+    post:
+      tags: [LabTemplates]
+      summary: Create lab template (instructor/admin)
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: "#/components/schemas/LabTemplate" }
+      responses:
+        "201": { description: Created, content: { application/json: { schema: { $ref: "#/components/schemas/LabTemplate" } } } }
+
+  /lab-templates/{id}:
+    get:
+      tags: [LabTemplates]
+      summary: Get template
+      parameters: [ { name: id, in: path, required: true, schema: { type: string, format: uuid } } ]
+      responses:
+        "200": { description: OK, content: { application/json: { schema: { $ref: "#/components/schemas/LabTemplate" } } } }
+    patch:
+      tags: [LabTemplates]
+      summary: Update template
+      parameters: [ { name: id, in: path, required: true, schema: { type: string, format: uuid } } ]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name: { type: string }
+                description: { type: string }
+                difficulty: { type: string, enum: [easy, medium, hard] }
+                tags: { type: array, items: { type: string } }
+                eveNgTopologyId: { type: string }
+      responses:
+        "200": { description: OK, content: { application/json: { schema: { $ref: "#/components/schemas/LabTemplate" } } } }
+    delete:
+      tags: [LabTemplates]
+      summary: Delete template
+      parameters: [ { name: id, in: path, required: true, schema: { type: string, format: uuid } } ]
+      responses:
+        "204": { description: No content }
+
+  /labs:
+    get:
+      tags: [Labs]
+      summary: List labs (instances scheduled/active for groups)
+      parameters:
+        - { $ref: "#/components/parameters/PageParam" }
+        - { $ref: "#/components/parameters/PerPageParam" }
+        - name: groupId
+          in: query
+          schema: { type: string, format: uuid }
+        - name: status
+          in: query
+          schema: { type: string }
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  items: { type: array, items: { $ref: "#/components/schemas/Lab" } }
+                  meta: { $ref: "#/components/schemas/PageMeta" }
+    post:
+      tags: [Labs]
+      summary: Create lab for a group from template
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [templateId, groupId, startsAt, endsAt]
+              properties:
+                templateId: { type: string, format: uuid }
+                groupId: { type: string, format: uuid }
+                startsAt: { type: string, format: date-time }
+                endsAt: { type: string, format: date-time }
+      responses:
+        "201": { description: Created, content: { application/json: { schema: { $ref: "#/components/schemas/Lab" } } } }
+
+  /labs/{id}:
+    patch:
+      tags: [Labs]
+      summary: Update lab (schedule/status)
+      parameters: [ { name: id, in: path, required: true, schema: { type: string, format: uuid } } ]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                status: { type: string, enum: [draft, scheduled, active, archived] }
+                startsAt: { type: string, format: date-time, nullable: true }
+                endsAt: { type: string, format: date-time, nullable: true }
+      responses:
+        "200": { description: OK, content: { application/json: { schema: { $ref: "#/components/schemas/Lab" } } } }
+
+  /labs/{id}/enroll:
+    post:
+      tags: [Labs]
+      summary: Enroll current user to lab (creates LabSession)
+      parameters: [ { name: id, in: path, required: true, schema: { type: string, format: uuid } } ]
+      responses:
+        "201": { description: Created, content: { application/json: { schema: { $ref: "#/components/schemas/LabSession" } } } }
+        "403": { description: Quota exceeded or not allowed }
+
+  /lab-sessions:
+    get:
+      tags: [LabSessions]
+      summary: List my lab sessions
+      parameters: [ { $ref: "#/components/parameters/PageParam" }, { $ref: "#/components/parameters/PerPageParam" } ]
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  items: { type: array, items: { $ref: "#/components/schemas/LabSession" } }
+                  meta: { $ref: "#/components/schemas/PageMeta" }
+
+  /lab-sessions/{id}/start:
+    post:
+      tags: [LabSessions]
+      summary: Start session (provision in EVE-NG)
+      parameters: [ { name: id, in: path, required: true, schema: { type: string, format: uuid } } ]
+      responses:
+        "202": { description: Accepted (async provisioning), content: { application/json: { schema: { $ref: "#/components/schemas/LabSession" } } } }
+
+  /lab-sessions/{id}/stop:
+    post:
+      tags: [LabSessions]
+      summary: Stop session (destroy/stop topology)
+      parameters: [ { name: id, in: path, required: true, schema: { type: string, format: uuid } } ]
+      responses:
+        "200": { description: OK, content: { application/json: { schema: { $ref: "#/components/schemas/LabSession" } } } }
+
+  /lab-sessions/{id}:
+    get:
+      tags: [LabSessions]
+      summary: Get session
+      parameters: [ { name: id, in: path, required: true, schema: { type: string, format: uuid } } ]
+      responses:
+        "200": { description: OK, content: { application/json: { schema: { $ref: "#/components/schemas/LabSession" } } } }
+
+  /submissions:
+    get:
+      tags: [Submissions]
+      summary: List my submissions
+      parameters: [ { $ref: "#/components/parameters/PageParam" }, { $ref: "#/components/parameters/PerPageParam" } ]
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  items: { type: array, items: { $ref: "#/components/schemas/Submission" } }
+                  meta: { $ref: "#/components/schemas/PageMeta" }
+    post:
+      tags: [Submissions]
+      summary: Create or update a submission for session
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [labSessionId, content]
+              properties:
+                labSessionId: { type: string, format: uuid }
+                content: { type: string, description: "Markdown or plain text answers" }
+      responses:
+        "201": { description: Created, content: { application/json: { schema: { $ref: "#/components/schemas/Submission" } } } }
+
+  /submissions/{id}:
+    get:
+      tags: [Submissions]
+      summary: Get submission by id
+      parameters: [ { name: id, in: path, required: true, schema: { type: string, format: uuid } } ]
+      responses:
+        "200": { description: OK, content: { application/json: { schema: { $ref: "#/components/schemas/Submission" } } } }
+    patch:
+      tags: [Submissions]
+      summary: Grade submission (instructor)
+      parameters: [ { name: id, in: path, required: true, schema: { type: string, format: uuid } } ]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                status: { type: string, enum: [graded] }
+                score: { type: number, minimum: 0, maximum: 100 }
+                feedback: { type: string }
+      responses:
+        "200": { description: OK, content: { application/json: { schema: { $ref: "#/components/schemas/Submission" } } } }
+
+  /files/upload-url:
+    post:
+      tags: [Files]
+      summary: Get signed URL for upload (client uploads directly to storage)
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [name, contentType]
+              properties:
+                name: { type: string }
+                contentType: { type: string }
+                ttlSeconds: { type: integer, default: 600 }
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  uploadUrl: { type: string }
+                  file: { $ref: "#/components/schemas/FileRef" }
+
+  /files/{id}:
+    get:
+      tags: [Files]
+      summary: Get file metadata & signed download URL
+      parameters: [ { name: id, in: path, required: true, schema: { type: string, format: uuid } } ]
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/FileRef" }
+
+  /eve/ping:
+    get:
+      tags: [EVE]
+      summary: Health check bridge to EVE-NG
+      responses:
+        "200": { description: OK }
+
+  /eve/sessions/{id}/console-url:
+    get:
+      tags: [EVE]
+      summary: Get web console URL for a node/session (proxied)
+      parameters: [ { name: id, in: path, required: true, schema: { type: string, format: uuid } } ]
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  url: { type: string }
+
+  /admin/quotas:
+    get:
+      tags: [Admin]
+      summary: Inspect quotas per group
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  items:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        groupId: { type: string, format: uuid }
+                        labQuota: { type: integer }
+                        activeLabs: { type: integer }
+                        available: { type: integer }

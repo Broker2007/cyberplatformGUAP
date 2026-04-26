@@ -1,0 +1,34 @@
+.page-loader {
+    min-height: calc(100vh - var(--navbar-height));
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+}
+
+.waviy {
+    position: relative;
+    -webkit-box-reflect: below -20px linear-gradient(transparent, rgb(0 0 0 / 20%));
+}
+
+.waviy span {
+    position: relative;
+    display: inline-block;
+    font-size: 40px;
+    color: #fff;
+    text-transform: uppercase;
+    animation: waviy 1s infinite;
+    animation-delay: calc(0.1s * var(--i));
+}
+
+@keyframes waviy {
+    0%,
+    40%,
+    100% {
+        transform: translateY(0);
+    }
+
+    20% {
+        transform: translateY(-20px);
+    }
+}

@@ -1,0 +1,135 @@
+// features/audit/ui/AuditTable/AuditTable.module.scss
+.auditTable {
+    background: var(--bg-color);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgb(0 0 0 / 10%);
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+
+    th {
+        text-align: left;
+        padding: 16px;
+        background-color: var(--bg-color-secondary);
+        color: var(--text-color-secondary);
+        font-weight: 500;
+        border-bottom: 2px solid var(--border-color);
+    }
+
+    td {
+        padding: 16px;
+        border-bottom: 1px solid var(--border-color);
+        color: var(--text-color);
+    }
+
+    tr:hover {
+        background-color: var(--bg-color-secondary);
+    }
+}
+
+// Ячейка пользователя
+.userCell {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+
+    .userName {
+        font-weight: 500;
+        color: var(--primary-color);
+    }
+
+    .userId {
+        font-size: 12px;
+        color: var(--text-color-secondary);
+    }
+}
+
+// Ячейка лабораторной
+.labCell {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+
+    .labName {
+        font-weight: 500;
+    }
+
+    .labId {
+        font-size: 12px;
+        color: var(--text-color-secondary);
+    }
+}
+
+// Бейдж роли
+.roleBadge {
+    display: inline-block;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 500;
+    background-color: var(--bg-color-secondary);
+    color: var(--text-color);
+}
+
+// Бейдж действия
+.actionBadge {
+    display: inline-block;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 500;
+
+    &.upload {
+        background-color: rgb(40 167 69 / 10%);
+        color: #28a745;
+    }
+
+    &.replace {
+        background-color: rgb(255 193 7 / 10%);
+        color: #ffc107;
+    }
+
+    &.delete {
+        background-color: rgb(220 53 69 / 10%);
+        color: #dc3545;
+    }
+
+    &.download {
+        background-color: rgb(0 123 255 / 10%);
+        color: #007bff;
+    }
+}
+
+// Имя файла
+.fileName {
+    max-width: 200px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+// Размер файла
+.fileSize {
+    font-family: monospace;
+    color: var(--text-color-secondary);
+}
+
+// Загрузчик
+.loader {
+    padding: 40px;
+    text-align: center;
+    color: var(--text-color-secondary);
+}
+
+// Пустое состояние
+.empty {
+    padding: 40px;
+    text-align: center;
+    color: var(--text-color-secondary);
+    background: var(--bg-color);
+    border-radius: 12px;
+}

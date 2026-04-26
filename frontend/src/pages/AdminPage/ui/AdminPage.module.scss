@@ -1,0 +1,117 @@
+.adminPage {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 20px 24px 32px;
+    box-sizing: border-box;
+    min-height: calc(100vh - 72px);
+}
+
+.pageHeader {
+    margin-bottom: 24px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--border-color, #2e2e3a);
+}
+
+.pageTitle {
+    margin: 0 0 6px;
+    font-size: clamp(22px, 2.5vw, 28px);
+    font-weight: 700;
+    color: var(--text-color, #fafafa);
+    letter-spacing: -0.02em;
+}
+
+.pageSubtitle {
+    margin: 0;
+    font-size: 14px;
+    color: var(--text-color-secondary, #a1a1aa);
+    max-width: 520px;
+    line-height: 1.45;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: minmax(300px, 400px) minmax(0, 1fr);
+    gap: 24px;
+    align-items: stretch;
+}
+
+.left {
+    min-width: 0;
+}
+
+.right {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    min-width: 0;
+    min-height: calc(100vh - 220px);
+    max-height: calc(100vh - 100px);
+}
+
+.sectionTitle {
+    margin: 0 0 10px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text-color, #f4f4f5);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    opacity: 0.9;
+}
+
+.auditSection {
+    flex: 1 1 50%;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.auditScroll {
+    flex: 1;
+    min-height: 220px;
+    overflow: auto;
+    border-radius: 14px;
+    border: 1px solid var(--border-color, #2e2e3a);
+    background: var(--bg-color, #121218);
+    box-shadow: inset 0 1px 0 rgb(255 255 255 / 4%);
+}
+
+.newsSection {
+    flex: 1 1 50%;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.newsInner {
+    flex: 1;
+    min-height: 200px;
+    min-width: 0;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+@media (width <= 1024px) {
+    .grid {
+        grid-template-columns: 1fr;
+    }
+
+    .right {
+        max-height: none;
+        min-height: auto;
+    }
+
+    .auditSection,
+    .newsSection {
+        flex: none;
+        min-height: 260px;
+    }
+
+    .auditScroll {
+        max-height: 42vh;
+    }
+
+    .newsInner {
+        max-height: 42vh;
+    }
+}

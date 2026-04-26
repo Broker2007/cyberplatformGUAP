@@ -1,0 +1,33 @@
+# ---------------------
+# FRONTEND (React)
+# ---------------------
+http://cyberplatform.com {
+    encode gzip
+
+    # фронтенд-контейнер
+    reverse_proxy frontend:80
+
+    log {
+        output stdout
+        format console
+    }
+}
+
+# ---------------------
+# BACKEND (API)
+# ---------------------
+http://api.cyberplatform.com {
+    encode gzip
+
+    # api-контейнер
+    reverse_proxy api:8080
+
+    log {
+        output stdout
+        format console
+    }
+}
+
+http://files.cyberplatform.com {
+	reverse_proxy minio:9000
+}

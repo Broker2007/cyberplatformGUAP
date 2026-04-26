@@ -1,0 +1,317 @@
+.ProfilePage {
+    padding: 43px;
+
+    .main_block {
+        background-color: var(--secondary-color);
+    }
+
+    .profile {
+        width: 100%;
+        background-color: var(--inverted-bg-color);
+        height: 360px;
+        border-bottom: 3px solid var(--secondary-color);
+        display: flex;
+        justify-content: start;
+        align-items: center;
+        gap: 59px;
+        padding-left: 51px;
+        position: relative;
+
+        .icon_avatar {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            fill: var(--gray-color);
+        }
+
+        .head_title {
+            font: var(--font-xl-b);
+            color: var(--primary-color);
+            margin: 0;
+        }
+
+        .head_profil {
+            opacity: 0;
+            display: flex;
+            align-items: center;
+            justify-content: start;
+            gap: 12px;
+            margin-top: 14px;
+
+            .icon_exclamation {
+                width: 23px;
+                height: 23px;
+                fill: var(--gray-color);
+            }
+
+            .username {
+                font: var(--font-xl-b);
+                color: var(--gray-color);
+                margin: 0;
+            }
+        }
+
+        .block_desc_profile {
+            display: flex;
+            justify-content: start;
+            align-items: start;
+            margin-top: 49px;
+            gap: 212px;
+
+            .desc_profil_title {
+                font: var(--font-xl-b);
+                color: var(--primary-color);
+                margin: 0;
+            }
+
+            .desc_profil {
+                font: var(--font-l-b);
+                color: var(--gray-color);
+                margin: 0;
+            }
+        }
+    }
+}
+
+.block_search {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--inverted-bg-color2);
+    padding: 25px 29px 25px 62px;
+
+    .title_labs {
+        display: flex;
+        justify-content: start;
+        align-items: center;
+        gap: 14px;
+        font: var(--font-xl-b);
+
+        .dot {
+            color: var(--gray-color);
+        }
+
+        .lab_text {
+            color: var(--green-color);
+        }
+    }
+
+    .input_search {
+        width: 479px;
+        border-radius: 7px;
+    }
+}
+
+.block_labs {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    background-color: var(--inverted-bg-color);
+}
+
+.btn_exit {
+    // position: absolute;
+    // top: 20px;
+    // right: 20px;
+    gap: 10px;
+    background: none;
+    align-items: center;
+
+    .arrow_icon {
+        width: 16px;
+        height: 16px;
+        fill: var(--red-color);
+        margin-top: 3px;
+    }
+
+    .text_arrow_btn {
+        font: var(--font-l);
+        color: var(--red-color);
+        margin: 0;
+    }
+}
+
+// кнопка отчетов
+.button_visit {
+    box-sizing: border-box;
+    box-shadow: inset 0 0 0 2px var(--green-color);
+    justify-self: end;
+    margin-top: 15px;
+    font: var(--font-s-b);
+    background:
+        linear-gradient(
+            115deg,
+            var(--bg-color) 0%,
+            var(--bg-color) 48.7%,
+            white 49%,
+            white 51%,
+            var(--green-color) 51.3%,
+            var(--green-color) 100%
+        );
+    background-size: 220% 100%;
+    background-position: 100% 0;
+    transition: background-position 0.6s ease;
+
+    &:hover {
+        background-position: 0 0;
+    }
+}
+
+// стили компонента лаба
+.labWorkPage {
+    min-height: 100vh;
+    padding: 40px 20px;
+    background-color: var(--bg-color);
+}
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.pageTitle {
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    margin-bottom: 30px;
+}
+
+.labDescription {
+    background-color: var(--bg-color-secondary);
+    border-radius: 8px;
+    padding: 24px;
+    margin-bottom: 30px;
+
+    h2 {
+        font-size: 1.3rem;
+        font-weight: 500;
+        margin-bottom: 16px;
+        color: var(--text-color);
+    }
+
+    p {
+        line-height: 1.6;
+        color: var(--text-color-secondary);
+    }
+}
+
+.submitSection {
+    margin-top: 30px;
+    text-align: right;
+}
+
+.submitButton {
+    min-width: 200px;
+}
+
+.reportCard {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    margin-top: 20px;
+    background-color: var(--bg-color-secondary);
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+
+    .reportIcon {
+        font-size: 32px;
+        margin-right: 20px;
+    }
+
+    .reportInfo {
+        flex: 1;
+
+        .reportName {
+            font-size: 16px;
+            font-weight: 500;
+            color: var(--text-color);
+            margin-bottom: 8px;
+            word-break: break-word;
+        }
+
+        .reportMeta {
+            font-size: 14px;
+            color: var(--text-color-secondary);
+        }
+    }
+
+    .reportActions {
+        display: flex;
+        gap: 12px;
+        align-items: center;
+
+        .reportLink {
+            color: var(--primary-color);
+            text-decoration: none;
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+}
+
+// Адаптивность
+@media (max-width: 768px) {
+    .reportCard {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+
+        .reportIcon {
+            margin-right: 0;
+        }
+
+        .reportActions {
+            width: 100%;
+            justify-content: flex-end;
+        }
+    }
+}
+
+// иконка
+.avatarWrapper {
+    width: 256px;
+    height: 256px;
+    border-radius: 50%;
+    overflow: hidden;
+    cursor: pointer;
+    border: 2px solid #e5e7eb;
+    transition: 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:hover {
+        transform: scale(1.05);
+    }
+}
+
+.avatar {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.avatarIcon {
+    width: 100%;
+    height: 100%;
+}
+
+.logoutButtons {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    gap: 12px;
+}
+
+.btn_exit_all {
+    background: none;
+
+    .text_arrow_btn {
+        font: var(--font-l);
+        color: orange;
+        margin: 0;
+    }
+}

@@ -1,0 +1,46 @@
+.overlay {
+    position: fixed;
+    inset: 0;
+    background: rgb(0 0 0 / 90%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.imageWrapper {
+    max-width: 90%;
+    max-height: 90%;
+}
+
+.image {
+    max-width: 100%;
+    max-height: 90vh;
+    transition: transform 0.2s ease;
+}
+
+.left,
+.right {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 40px;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+
+.left {
+    left: 20px;
+}
+
+.right {
+    right: 20px;
+}
+
+.counter {
+    position: absolute;
+    bottom: 20px;
+    color: white;
+}

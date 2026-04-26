@@ -1,0 +1,60 @@
+.LabItemProfile{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    gap: 15px;
+    position: relative;
+    margin: 30px;
+        
+    .left_block{
+        display: flex;
+        flex-direction: column;
+        gap:5px;
+        
+        .upper_left_block{
+            display: flex;
+            flex-direction: row;
+            gap:10px;
+
+            .title{
+                font-size: var(--font-size-l);
+                width: 250px;
+                overflow: hidden;
+            }
+        }
+
+        .lower_left_block{
+            display: flex;
+        }
+        
+        .teacher{
+            margin-right: 5px;
+            color: var(--gray-color);
+            font-size: var(--font-size-s);
+        }
+    }
+    .right_block{
+        display: flex;
+        .status{
+            margin-left: 30px;
+            font-size: var(--font-size-s);
+            color: var(--green-color);
+        }
+
+        .right_right_block{
+            position: absolute;
+            right:0;
+
+            .link_to_lab{
+                text-decoration: none;
+                color: var(--blue-color);
+                font-size: var(--font-size-s);
+            }
+
+            .date{
+                color:var(--gray-color);
+            }
+        }
+    }
+}
+
