@@ -7,7 +7,7 @@ export const avatarApi = baseApi.injectEndpoints({
             FormData
         >({
             query: (formData) => ({
-                url: '/auth/updateavatar',
+                url: '/updateavatar',
                 method: 'POST',
                 body: formData,
             }),

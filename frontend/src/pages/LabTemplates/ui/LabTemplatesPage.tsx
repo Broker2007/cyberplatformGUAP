@@ -12,7 +12,15 @@ import cls from './LabTemplatesPage.module.scss';
 const LabTemplatesPage = () => {
     const dispatch = useAppDispatch();
 
-    const { currentPage, perPage, searchQuery } = useAppSelector((state) => state.pagination.labs);
+    // 🔥 безопасный доступ
+    const pagination = useAppSelector(
+        (state) => state.pagination.labs,
+    );
+
+    const currentPage = pagination?.currentPage ?? 0;
+    const perPage = pagination?.perPage || 6;
+    const totalPages = pagination?.totalPages ?? 0;
+    const searchQuery = pagination?.searchQuery || '';
 
     const [isChangingPage, setIsChangingPage] = useState(false);
     const [localSearchValue, setLocalSearchValue] = useState(searchQuery || '');
@@ -176,7 +184,7 @@ const LabTemplatesPage = () => {
                     {renderContent()}
                 </div>
 
-                {labs.length > 0 && labsData && (
+                {totalPages > 1 && (
                     <div className={cls.paginationSection}>
                         <Pagination
                             scope="labs"

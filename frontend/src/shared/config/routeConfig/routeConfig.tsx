@@ -54,7 +54,7 @@ export const routeConfig: Record<AppRoutes, AppRouteProps> = {
         element: <GroupsPage />,
         layout: 'with-header',
         isPrivate: true,
-        hidden: true,
+        hidden: false,
     },
     [AppRoutes.LOGIN]: {
         path: RoutePath.login,
@@ -77,14 +77,14 @@ export const routeConfig: Record<AppRoutes, AppRouteProps> = {
         element: <LabTemplatesPage />,
         layout: 'with-header',
         isPrivate: true,
-        hidden: true,
+        hidden: false,
     },
     [AppRoutes.LAB_TEMPLATE]: {
         path: RoutePath.lab_template,
         element: <LabTemplatePage />,
         layout: 'with-header',
         isPrivate: true,
-        hidden: true,
+        hidden: false,
     },
     [AppRoutes.ADMIN]: {
         path: RoutePath.admin,

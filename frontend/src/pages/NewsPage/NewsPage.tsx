@@ -17,7 +17,7 @@ const NewsPage = () => {
     );
 
     const currentPage = pagination?.currentPage ?? 0;
-    const perPage = pagination?.perPage || 10;
+    const perPage = pagination?.perPage || 6;
     const totalPages = pagination?.totalPages ?? 0;
 
     const apiPage = currentPage + 1;

@@ -76,7 +76,7 @@ export const newsApi = baseApi.injectEndpoints({
             { title: string; content: string }
         >({
             query: (body) => ({
-                url: '/news/publications',
+                url: '/news/publications/create',
                 method: 'POST',
                 body,
             }),

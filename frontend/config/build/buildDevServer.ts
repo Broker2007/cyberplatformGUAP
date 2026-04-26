@@ -7,5 +7,15 @@ export function buildDevServer(options: BuildOptions): DevServerConfiguration {
         open: true,
         historyApiFallback: true,
         hot: true,
+        proxy: {
+            '/auth': 'http://127.0.0.1:8081',
+            '/news': 'http://127.0.0.1:8081',
+            '/lab-templates': 'http://127.0.0.1:8081',
+            '/uploads': 'http://127.0.0.1:8081',
+            '/users': 'http://127.0.0.1:8081',
+            '/upload': 'http://127.0.0.1:8081',
+            '/updateavatar': 'http://127.0.0.1:8081',
+            '/debug': 'http://127.0.0.1:8081',
+        },
     };
 }

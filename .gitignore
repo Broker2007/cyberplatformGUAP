@@ -22,3 +22,7 @@ storybook-static/
 # OS
 .DS_Store
 Thumbs.db
+
+# Custom
+EXPLANATION.md
+REVIEW_PLAN.md

@@ -7,7 +7,7 @@ import {
 } from '@reduxjs/toolkit/query/react';
 
 const rawBaseQuery = fetchBaseQuery({
-    baseUrl: 'http://api.cyberplatform.com',
+    baseUrl: '',
     credentials: 'include',
     prepareHeaders: (headers) => {
         const token = localStorage.getItem('accessToken');

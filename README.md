@@ -6,6 +6,9 @@
 ![Webpack](https://img.shields.io/badge/Build-Webpack-lightgrey?logo=webpack)
 
 ![Status](https://img.shields.io/badge/Status-Work--in--Progress-orange)
+<br/>
+
+![Preview](./assets/demo.gif)
 
 **CyberPlatform** — это современное высокопроизводительное веб-приложение для геймеров, построенное на стеке React/TypeScript с использованием передовых архитектурных паттернов. Проект находится в активной стадии разработки.
 

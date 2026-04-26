@@ -10,7 +10,7 @@ import { useLogout } from 'entities/user';
 import ArrowExitIcon from 'shared/assets/icons/exit.svg';
 import { useState } from 'react';
 import { ImageUploadModal } from 'features/image-upload';
-import { useLogoutAllDevicesMutation, useLogoutUserMutation } from 'features/auth/api/authApi';
+import { useLogoutAllDevicesMutation } from 'features/auth/api/authApi';
 import cls from './ProfilePage.module.scss';
 
 interface ProfilePageProps {
@@ -30,20 +30,23 @@ const ProfilePage = ({ className }: ProfilePageProps) => {
     const navigate = useNavigate();
     const { logout } = useLogout();
     const [isAvatarModal, setIsAvatarModal] = useState(false);
-    const [logoutUser] = useLogoutUserMutation();
     const [logoutAllDevices, { isLoading: isLogoutAllLoading }] = useLogoutAllDevicesMutation();
 
     const handleLogout = async () => {
         if (window.confirm('Вы уверены, что хотите выйти?')) {
-            await logoutUser();
             await logout();
         }
     };
 
     const handleLogoutAll = async () => {
         if (window.confirm('Выйти со всех устройств?')) {
-            await logoutAllDevices();
-            await logout();
+            try {
+                await logoutAllDevices().unwrap();
+            } catch (error) {
+                console.error('Logout all failed', error);
+            } finally {
+                await logout();
+            }
         }
     };
 

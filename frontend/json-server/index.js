@@ -9,19 +9,21 @@ const { v4: uuidv4 } = require('uuid');
 const server = jsonServer.create();
 const router = jsonServer.router(path.resolve(__dirname, 'db.json'));
 
+// CORS configuration - MUST BE FIRST
+server.use(
+    cors({
+        origin: true, // Allow all origins for local development
+        credentials: true,
+        methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+        allowedHeaders: ['Content-Type', 'Authorization'],
+    }),
+);
+server.options('*', cors());
+
 // Middleware
 server.use(cookieParser());
 server.use(jsonServer.defaults({}));
 server.use(jsonServer.bodyParser);
-server.use(
-    cors({
-        origin: 'http://localhost:3000',
-        credentials: true,
-        preflightContinue: false,
-        methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-    }),
-);
-server.options('*', cors());
 
 // Имитация задержки
 server.use(async (req, res, next) => {
@@ -252,7 +254,7 @@ server.post('/lab-templates/:labId/reports', requireAuth, upload.single('file'),
         const stat = fs.statSync(filePath);
 
         // Создаем URL для доступа к файлу
-        const fileUrl = `http://localhost:8080/uploads/${req.file.filename}`;
+        const fileUrl = `http://127.0.0.1:8081/uploads/${req.file.filename}`;
 
         // Создаем запись об отчете
         const reportData = {
@@ -310,17 +312,30 @@ server.post('/lab-templates/:labId/reports', requireAuth, upload.single('file'),
 server.get('/users/:userId/reports', requireAuth, (req, res) => {
     try {
         const { userId } = req.params;
+        const page = parseInt(req.query.page) || 1;
+        const perPage = parseInt(req.query.perPage) || 10;
 
-        console.log(`📋 Запрос всех отчетов пользователя ${userId}`);
+        console.log(`📋 Запрос всех отчетов пользователя ${userId}, стр. ${page}`);
 
         const db = JSON.parse(fs.readFileSync(path.resolve(__dirname, 'db.json'), 'UTF-8'));
         const { labReports = [] } = db;
 
         // Фильтруем отчеты по userId
-        const userReports = labReports.filter((r) => r.userId === userId);
+        const userReports = labReports.filter((r) => String(r.userId) === String(userId));
 
-        console.log(`📊 Найдено отчетов: ${userReports.length}`);
-        return res.json(userReports);
+        const startIndex = (page - 1) * perPage;
+        const endIndex = startIndex + perPage;
+        const paginatedReports = userReports.slice(startIndex, endIndex);
+
+        console.log(`📊 Найдено отчетов: ${userReports.length}, возвращено: ${paginatedReports.length}`);
+
+        return res.json({
+            items: paginatedReports,
+            total: userReports.length,
+            page,
+            perPage,
+            totalPages: Math.ceil(userReports.length / perPage),
+        });
     } catch (error) {
         console.error('❌ Ошибка при получении отчетов пользователя:', error);
         return res.status(500).json({
@@ -485,7 +500,7 @@ server.post(
             }
 
             const newImages = (req.files || []).map((file) => ({
-                url: `http://localhost:8080/uploads/${file.filename}`,
+                url: `http://127.0.0.1:8081/uploads/${file.filename}`,
             }));
 
             newsItem.images = [...(newsItem.images || []), ...newImages];
@@ -621,7 +636,7 @@ server.post('/upload/simple', upload.single('file'), (req, res) => {
         const stat = fs.statSync(filePath);
 
         // Создаем URL для доступа к файлу
-        const fileUrl = `http://localhost:8080/uploads/${req.file.filename}`;
+        const fileUrl = `http://127.0.0.1:8081/uploads/${req.file.filename}`;
 
         console.log(`✅ Файл успешно сохранен: ${req.file.originalname} (${stat.size} bytes)`);
         console.log(`📁 Путь к файлу: ${filePath}`);
@@ -695,7 +710,7 @@ server.get('/uploads', (req, res) => {
             const stat = fs.statSync(filePath);
             return {
                 name: filename,
-                url: `http://localhost:8080/uploads/${filename}`,
+                url: `http://127.0.0.1:8081/uploads/${filename}`,
                 size: stat.size,
                 created: stat.birthtime,
                 modified: stat.mtime,
@@ -944,7 +959,7 @@ server.get('/auth/me', requireAuth, (req, res) => {
             const filePath = path.join(uploadsDir, avatarUrl);
             if (fs.existsSync(filePath)) {
                 // Добавляем временную метку для обхода кэша
-                avatarUrl = `http://localhost:8080/uploads/${avatarUrl}?t=${Date.now()}`;
+                avatarUrl = `http://127.0.0.1:8081/uploads/${avatarUrl}?t=${Date.now()}`;
             } else {
                 avatarUrl = null;
                 // Если файла нет, очищаем поле avatar
@@ -1057,7 +1072,7 @@ server.get('/lab-templates', requireAuth, (req, res) => {
         const { labTemplates = [] } = db;
 
         const page = parseInt(req.query.page) || 1;
-        const perPage = parseInt(req.query.perPage) || 20;
+        const perPage = parseInt(req.query.perPage) || 6;
         const search = req.query.search || '';
 
         let filteredTemplates = labTemplates;
@@ -1094,7 +1109,7 @@ server.get('/lab-templates', requireAuth, (req, res) => {
             items: [],
             meta: {
                 page: 1,
-                perPage: 20,
+                perPage: 6,
                 total: 0,
                 totalPages: 0,
             },
@@ -1162,7 +1177,7 @@ server.post('/updateavatar', requireAuth, upload.single('avatar'), (req, res) =>
 
         return res.json({
             success: true,
-            avatarUrl: `http://localhost:8080/uploads/${req.file.filename}`,
+            avatarUrl: `http://127.0.0.1:8081/uploads/${req.file.filename}`,
         });
     } catch (error) {
         console.error('❌ Upload avatar error:', error);
@@ -1196,7 +1211,7 @@ server.get('/updateavatar', requireAuth, (req, res) => {
 
         // 🔥 имитация временной ссылки
         const expires = Date.now() + 15 * 60 * 1000;
-        const url = `http://localhost:8080/uploads/${user.avatar}?expires=${expires}`;
+        const url = `http://127.0.0.1:8081/uploads/${user.avatar}?expires=${expires}`;
 
         return res.json({ url });
     } catch (error) {
@@ -1209,8 +1224,8 @@ server.get('/updateavatar', requireAuth, (req, res) => {
 
 server.use(router);
 
-server.listen(8080, () => {
-    console.log('✅ JSON Server с поддержкой загрузки файлов запущен на http://localhost:8080');
+server.listen(8081, () => {
+    console.log('✅ JSON Server с поддержкой загрузки файлов запущен на http://127.0.0.1:8081');
     console.log('🎯 Frontend: http://localhost:3000');
     console.log('📁 Папка загрузок:', uploadsDir);
     console.log('');

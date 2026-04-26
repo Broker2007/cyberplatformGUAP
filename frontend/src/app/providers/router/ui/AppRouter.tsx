@@ -7,7 +7,7 @@ import { PageLoader } from 'shared/ui/PageLoader/PageLoader';
 import RequireUser from '../guards/RequireUser/RequireUser';
 
 const AppRouter = () => {
-    const routes = Object.entries(routeConfig).filter(([, config]) => !config.hidden);
+    const routes = Object.entries(routeConfig);
 
     const publicWithoutHeader = routes.filter(
         ([, config]) => config.layout === 'without-header' && !config.isPrivate,
@@ -71,21 +71,6 @@ const AppRouter = () => {
                                 )}
                             />
                         ))}
-                    {Object.entries(routeConfig)
-                        .filter(
-                            ([, c]) => c.hidden
-                                && c.layout === 'with-header'
-                                && c.isPrivate
-                                && !c.allowedRoles,
-                        )
-                        .map(([key, c]) => (
-                            <Route
-                                key={`hidden-${key}`}
-                                path={c.path}
-                                element={<Navigate to="/" replace />}
-                            />
-                        ))}
-
                 </Route>
 
                 {/* Роуты только для администраторов (см. requireAdmin в RequireUser). */}
